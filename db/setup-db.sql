@@ -2,11 +2,11 @@
 -- Deleting tables if they are already present to recreate
 --
 
-DROP TABLE IF EXISTS student_details;
-DROP TABLE IF EXISTS quiz_categories;
-DROP TABLE IF EXISTS quiz_questions;
-DROP TABLE IF EXISTS session_history;
 DROP TABLE IF EXISTS question_history;
+DROP TABLE IF EXISTS session_history;
+DROP TABLE IF EXISTS student_details;
+DROP TABLE IF EXISTS quiz_questions;
+DROP TABLE IF EXISTS quiz_categories;
 DROP TABLE IF EXISTS fun_facts;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE question_history (
     student_id SMALLINT,
     session_id SMALLINT,
     quesiton_id SMALLINT,
-    student_ans BOOLEAN,
+    ans_correctly BOOLEAN,
     PRIMARY KEY (id),
     FOREIGN KEY (session_id) REFERENCES student_details,
     FOREIGN KEY (session_id) REFERENCES session_history,
