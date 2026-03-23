@@ -7,7 +7,10 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon -L ./api/index.js",
+    "start": "node ./api/index.js",
+    "setup-db": "node ./api/db/setup-db.js",
+    "test": "jest --ci --verbose"
   },
   "dependencies": {
     "cors": "^2.8.6",
