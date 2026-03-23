@@ -1,0 +1,19 @@
+.world-background{
+  height: 600px; /* adjust */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    #a78bc2 60%,  
+    #ffffff 40%  
+  );
+}
+
+.globe {
+  width: 550px;
+}
+
+.nav-text-colour{
+    color: #9B6CD7;
+}
