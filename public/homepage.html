@@ -11,37 +11,36 @@
     <title>GeoGenius</title>
 </head>
 <body>
-    <!-- nav bar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse  d-flex justify-content-around gap-3" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+  <!-- navbar section-->
+  <nav class="navbar navbar-expand-lg custom-navbar">
+
+    <div class="container">
+      <ul class="navbar-nav w-100 d-flex flex-row justify-content-between align-items-center">
         <li class="nav-item">
-          <a class="nav-link active nav-text-colour" aria-current="page" href="#">Leaderboard</a>
+          <a class="nav-link" href="#">Leaderboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="#">Facts</a>
+          <a class="nav-link" href="#">Facts</a>
+        </li>
+        <li class="nav-item brand-item">
+          <a class="nav-link brand-logo" href="#">GeoGenius 🌍</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">GeoGenius🌍</a>
+          <a class="nav-link" href="#">Start Quiz</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="#">Start Quiz</a>
-        </li>
-        <li class="nav-item dropdow ">
-          <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
             Account
           </a>
           <ul class="dropdown-menu text-center">
-            <li><a class="dropdown-item" href="#">My Learning</a></li>
-            <li><a class="dropdown-item" href="#">Achievments</a></li>
-            <li><a class="dropdown-item" href="#">Sign Out</a></li>
+            <li><a class="dropdown-item nav-link" href="#">My Learning</a></li>
+            <li><a class="dropdown-item nav-link" href="#">Achievements</a></li>
+            <li><a class="dropdown-item nav-link" href="#">Sign Out</a></li>
           </ul>
         </li>
       </ul>
     </div>
-  </div>
-</nav>
+  </nav>
 
     <!-- world -->
     <section>
@@ -52,93 +51,151 @@
     </section>
 
     <!-- Quiz -->
-    <section>
-      <h2 class="text-center py-4">Categories</h1>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Natural Hazards 🌋</h5>
-                    <p class="card-text">Test your skills and deepen your knowledge of Natural Hazards in this engaging and interactive quiz.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Human Environments 👣</h5>
-                    <p class="card-text">Test your skills and deepen your knowledge of Human Environments in this engaging and interactive quiz.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Physical Landscape 🪨</h5>
-                    <p class="card-text">Test your skills and deepen your knowledge of Physical Landscape in this engaging and interactive quiz.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Lucky Dip🔄</h5>
-                    <p class="card-text">Test your skills and deepen your knowledge on all three categories in this engaging and interactive quiz.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-                </div>
-            </div>
-            </div>
-    </section>
+  <section class="categories-section container py-5">
+    <h2 class="text-center py-4">Categories</h2>
 
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+      <div class="col">
+        <div class="card h-100 category-card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Natural Hazards 🌋</h5>
+            <p class="card-text">
+              Test your skills and deepen your knowledge of Natural Hazards in this engaging and interactive quiz.
+            </p>
+            <a href="#" class="btn category-btn">Start Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 category-card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Human Environments 👣</h5>
+            <p class="card-text">
+              Test your skills and deepen your knowledge of Human Environments in this engaging and interactive quiz.
+            </p>
+            <a href="#" class="btn category-btn">Start Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 category-card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Physical Landscape 🪨</h5>
+            <p class="card-text">
+              Test your skills and deepen your knowledge of Physical Landscape in this engaging and interactive quiz.
+            </p>
+            <a href="#" class="btn category-btn">Start Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 category-card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Lucky Dip 🔄</h5>
+            <p class="card-text">
+              Test your skills and deepen your knowledge on all three categories in this engaging and interactive quiz.
+            </p>
+            <a href="#" class="btn category-btn">Start Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
     <!-- Facts -->
-    <section>           
-        <div class="card mb-3" style="max-width: 540px;">
+    <!-- <section>
+        <h2 class="card-title text-center">Want to Learn Some Facts?</h2>           
+        <div class="card mb-3 ">
             <div class="row g-0">
                 <div class="col-md-4">
                 <img src="img/funfacts.png" class="funfacts" width="200" alt="...">
                 </div>
                 <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">Want to Learn Some Facts?</h5>
+             
                     <p class="card-text">Did you know...</p>
                     <a href="#" class="btn btn-primary">Button</a>
                 </div>
                 </div>
             </div>
             </div>
-    </section>
+    </section> -->
+
+    <section class="facts-section container my-5">
+  <h2 class="text-center section-title">Want to Learn Some Facts?</h2>
+
+  <div class="facts-card">
+    <div class="row align-items-center g-0">
+      <div class="col-md-4 text-center">
+        <img src="img/funfacts.png" class="funfacts-img" alt="Fun facts icon">
+      </div>
+
+      <div class="col-md-8">
+        <div class="facts-content text-center">
+          <p class="facts-text">Did you know...</p>
+          <a href="#" class="btn facts-btn">Generate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
     <!-- Progress -->
     <section>
         <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+        <div class="card-header">Natural Hazards 🌋</div>
         <div class="card-body">
-            <h5 class="card-title">Primary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+            <h5 class="card-title">Based on your recent quiz you received...</h5>
+            <p class="card-text">0/5</p>
         </div>
         </div>
 
         <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+        <div class="card-header">Human Environments 👣</div>
         <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+            <h5 class="card-title">Based on your recent quiz you received...</h5>
+            <p class="card-text">0/5</p>
         </div>
         </div>
 
         <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+        <div class="card-header">Physical Landscape 🪨</div>
         <div class="card-body">
-            <h5 class="card-title">Success card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+            <h5 class="card-title">Based on your recent quiz you received...</h5>
+            <p class="card-text">0/5</p>
         </div>
         </div>
-  
+    </section>
+
+    <!-- Achievments/Leaderboard -->
+    <section>
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">Achievements Overview</h5>
+                <img src="img/monia.png" alt="mini-monia">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">Leaderboard</h5>
+                    
+                    <img src="img/funfacts.png" class="rounded-circle" alt="...">
+                    <img src="img/funfacts.png" class="rounded-circle" alt="...">
+                    <img src="img/monia.png" class="rounded-circle" alt="...">
+                    
+                </div>
+            </div>        
     </section>
 
 </body>
+
+<footer>
+        © 2026 Nexus Studios | All Rights Reserved
+</footer>
 </html>
