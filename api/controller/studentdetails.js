@@ -21,7 +21,8 @@ async function getStudentByEmail(req, res) {
                 }
                 res.status(200).json({
                     success:true,
-                    token:token
+                    token:token,
+                    first_name: user.first_name
                 });
             }
             jwt.sign(payload, process.env.SECRET_TOKEN, {expiresIn: 3600}, sendToken);

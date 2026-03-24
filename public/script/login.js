@@ -42,7 +42,8 @@ form.addEventListener("submit", async (e) => {
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
-        alert("Logged In")
+        localStorage.setItem("first_name", data.first_name);
+        //alert("Logged In")
         window.location.assign("homepage.html");
       } else {
         alert(data.error);
