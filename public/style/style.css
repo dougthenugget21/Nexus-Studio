@@ -296,3 +296,48 @@ body {
   background: #a78bc2;
   padding: 50px;
 }
+
+.tectonic-plates-section {
+    background: linear-gradient(135deg, #f8f9ff 0%, #e0d8f5 100%);
+    border-radius: 24px;
+    padding: 60px 0;
+    margin: 40px 0;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.tectonic-btn {
+    background: linear-gradient(135deg, #9b7bb7 0%, #7d5c9d 100%);
+    color: white !important;
+    border: none !important;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(155,123,183,0.4);
+}
+
+.tectonic-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(155,123,183,0.6);
+    color: white !important;
+}
+
+.globe-standalone-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.tectonic-globe {
+    border-radius: 22px;
+    transition: transform 0.3s ease;
+}
+
+.globe-standalone-wrapper:hover .tectonic-globe {
+    transform: scale(1.02);
+}
