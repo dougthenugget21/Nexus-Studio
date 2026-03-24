@@ -42,23 +42,36 @@
         <!-- First Name -->
         <label for="first_name">First Name:</label><br/>
         <input type="text" id="first_name" name="first_name" class="form-control"/><br/>
+        <small id="firstName_error" class="error-text"></small><br/>
 
         <!-- Last Name -->
         <label for="last_name">Last Name:</label><br/>
         <input type="text" id="last_name" name="last_name" class="form-control"/><br/>
+        <small id="lastName_error" class="error-text"></small><br/>
 
         <!-- Email (added but safe) -->
         <label for="email">Email:</label><br/>
         <input type="email" id="email" name="email" class="form-control"/><br/>
+        <small id="email_error" class="error-text"></small><br/>
 
         <!-- Password -->
         <label for="password">Password:</label><br/>
         <input type="password" id="password" name="password" class="form-control"/><br/>
+        <small id="password_error" class="error-text"></small><br/>
+
+        <div class="password-rules">
+            <small id="rule_length">• At least 8 characters</small><br/>
+            <small id="rule_letter">• At least 1 alphabet</small><br/>
+            <small id="rule_number">• At least 1 number</small><br/>
+            <small id="rule_special">• At least 1 special character</small>
+        </div>
+        <br/>
 
         <!-- Confirm Password -->
         <label for="confirm_password">Confirm Password:</label><br/>
         <input type="password" id="confirm_password" name="confirm_password" class="form-control"/><br/>
-
+        <small id="confirmPassword_error" class="error-text"></small><br/>
+        
         <!-- Submit -->
         <input type="submit" value="Sign Up" class="btn category-btn login-btn"/><br/><br/>
 
