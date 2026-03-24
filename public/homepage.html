@@ -51,7 +51,7 @@
     </section>
 
     <!-- Quiz -->
-  <section class="categories-section container py-5">
+  <section class="categories-section container ">
     <h2 class="text-center py-4">Categories</h2>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
@@ -105,24 +105,6 @@
     </div>
   </section>
     <!-- Facts -->
-    <!-- <section>
-        <h2 class="card-title text-center">Want to Learn Some Facts?</h2>           
-        <div class="card mb-3 ">
-            <div class="row g-0">
-                <div class="col-md-4">
-                <img src="img/funfacts.png" class="funfacts" width="200" alt="...">
-                </div>
-                <div class="col-md-8">
-                <div class="card-body">
-             
-                    <p class="card-text">Did you know...</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-                </div>
-            </div>
-            </div>
-    </section> -->
-
     <section class="facts-section container my-5">
   <h2 class="text-center section-title">Want to Learn Some Facts?</h2>
 
@@ -146,56 +128,104 @@
 
 
     <!-- Progress -->
-    <section>
-        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Natural Hazards 🌋</div>
-        <div class="card-body">
-            <h5 class="card-title">Based on your recent quiz you received...</h5>
-            <p class="card-text">0/5</p>
-        </div>
+     <section class="container my-5 text-center">
+        <h2 class="fw-bold mb-4">Track Your Progress</h2>
+
+        <!-- Card 1 -->
+        <div class="row justify-content-center mb-3">
+          <div class="col-md-8">
+            <div class="d-flex rounded overflow-hidden progress-card">
+              <div class="bg-purple progress-side"></div>
+
+              <div class="flex-grow-1 p-3">
+                <h5 class="mb-1">Natural Hazards 🌋</h5>
+                <p class="mb-1 text-muted small">
+                  Based on your recent quiz you received...
+                </p>
+                <strong>0/5</strong>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Human Environments 👣</div>
-        <div class="card-body">
-            <h5 class="card-title">Based on your recent quiz you received...</h5>
-            <p class="card-text">0/5</p>
-        </div>
+        <!-- Card 2 -->
+        <div class="row justify-content-center mb-3">
+          <div class="col-md-8">
+            <div class="d-flex rounded overflow-hidden progress-card">
+              <div class="bg-purple progress-side"></div>
+
+              <div class="flex-grow-1 p-3">
+                <h5 class="mb-1">Human Environments 👣</h5>
+                <p class="mb-1 text-muted small">
+                  Based on your recent quiz you received...
+                </p>
+                <strong>0/5</strong>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Physical Landscape 🪨</div>
-        <div class="card-body">
-            <h5 class="card-title">Based on your recent quiz you received...</h5>
-            <p class="card-text">0/5</p>
+        <!-- Card 3 -->
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="d-flex rounded overflow-hidden progress-card">
+              <div class="bg-purple progress-side"></div>
+
+              <div class="flex-grow-1 p-3">
+                <h5 class="mb-1">Physical Landscape 🪨</h5>
+                <p class="mb-1 text-muted small">
+                  Based on your recent quiz you received...
+                </p>
+                <strong>0/5</strong>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-    </section>
+      </section>
 
     <!-- Achievments/Leaderboard -->
-    <section>
-        <div class="card-group">
-            <div class="card">
-                <div class="card-body">
-                <h5 class="card-title">Achievements Overview</h5>
-                <img src="img/monia.png" alt="mini-monia">
+    <section class="container my-5">
+      <div class="row g-3 justify-content-center">
+        <div class="col-md-8">
+          <div class="card border-0 h-100 achievement-card">
+            <div class="card-body text-center">
+              <h5 class="card-title mb-4">Achievements Overview</h5>
+              <div class="row align-items-center">
+                <div class="col-md-5 text-start">
+                  <p class="mb-4 fw-light">5-day streak 🌟</p>
+                  <p class="mb-4 fw-light">Quick Thinker 🧠</p>
+                  <p class="mb-4 fw-light">On Fire 🔥</p>
+                  <p class="mb-0 fw-light">Perfectionist 🎯</p>
                 </div>
+                <div class="col-md-7 text-center">
+                  <img src="img/monia.png" alt="mini-monia" class="img-fluid achievement-img">
+                </div>
+              </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                <h5 class="card-title">Leaderboard</h5>
-                    
-                    <img src="img/funfacts.png" class="rounded-circle" alt="...">
-                    <img src="img/funfacts.png" class="rounded-circle" alt="...">
-                    <img src="img/monia.png" class="rounded-circle" alt="...">
-                    
-                </div>
-            </div>        
+          </div>
+        </div>
+
+    <!-- Leaderboard -->
+    <div class="col-md-4">
+      <div class="card border-0 h-100 leaderboard-card">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-4">Leaderboard</h5>
+
+          <div class="d-flex flex-column align-items-center gap-3">
+            <img src="img/funfacts.png" class="rounded-circle leaderboard-avatar" alt="leader 1">
+            <img src="img/funfacts.png" class="rounded-circle leaderboard-avatar" alt="leader 2">
+            <img src="img/monia.png" class="rounded-circle leaderboard-avatar" alt="leader 3">
+          </div>
+        </div>
+      </div>
+    </div>
+
+      </div>
     </section>
 
 </body>
 
-<footer>
-        © 2026 Nexus Studios | All Rights Reserved
+<footer class="text-center py-3 footer-custom">
+  <small>© 2026 Nexus Studios | All Rights Reserved</small>
 </footer>
 </html>
