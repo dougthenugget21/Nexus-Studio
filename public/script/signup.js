@@ -62,7 +62,8 @@ form.addEventListener("submit", async (e) => {
     };
 
     try {
-        const response = await fetch("http://localhost:3000/studentdata/create", options);
+        //const response = await fetch("http://localhost:3000/studentdata/create", options);
+        const response = await fetch("https://nexus-studio-ipn8.onrender.com/studentdata/create", options);
         const data = await response.json();
 
         if (response.status === 201 || response.status === 200) {
