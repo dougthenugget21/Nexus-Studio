@@ -15,7 +15,7 @@ api.use(express.json());
 api.use("/studentdata", studentDetailsRouter);
 api.use("/categories", categoriesRouter)
 api.use("/quizquestions", quizQuestionsRouter)
-api.use("/", sessionHistoryRouter)
-api.use("/", questionHistoryRouter)
+api.use("/sessionhistory", sessionHistoryRouter)
+api.use("/questionhistory", questionHistoryRouter)
 
 module.exports = api;
