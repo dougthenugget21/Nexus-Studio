@@ -1,0 +1,42 @@
+const SessionHistory = require("../model/SessionHistory")
+
+async function allSessions(req, res) {
+    try{
+        const sessions = await SessionHistory.getAll()
+        res.status(200).json(sessions)
+    } catch (err) {
+        res.status(500).json({"error":err.message})
+    }
+}
+
+async function create(req, res) {
+    try{
+        const data = req.body
+        const newSession = await SessionHistory.createSession(data)
+        res.status(201).json(newSession)
+    } catch (err) {
+        res.status(500).json({"error":err.message})
+    }
+}
+
+async function sessionsByID(req, res) {
+    try{
+        const session_id = parseInt(req.params.session_id )
+        const session = await SessionHistory.getBySessionID(session_id)
+        res.status(200).json(session)
+    } catch (err) {
+        res.status(404).json({"error":err.message})
+    }
+}
+
+async function sessionsByStudentID(req, res) {
+    try{
+        const student_id = parseInt(req.params.student_id_id )
+        const session = await SessionHistory.getBySessionID(student_id)
+        res.status(200).json(session)
+    } catch (err) {
+        res.status(404).json({"error":err.message})
+    }
+}
+
+module.exports = {allSessions, create, sessionsByID, sessionsByStudentID}
