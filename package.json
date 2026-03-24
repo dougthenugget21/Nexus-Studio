@@ -10,7 +10,8 @@
     "dev": "nodemon -L ./api/index.js",
     "start": "node ./api/index.js",
     "setup-db": "node ./db/setup-db.js",
-    "test": "jest --ci --verbose"
+    "test": "jest --ci --verbose",
+    "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
