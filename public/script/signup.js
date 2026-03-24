@@ -65,13 +65,18 @@ form.addEventListener("submit", async (e) => {
         //const response = await fetch("http://localhost:3000/studentdata/create", options);
         const response = await fetch("https://nexus-studio-ipn8.onrender.com/studentdata/create", options);
         const data = await response.json();
-
         if (response.status === 201 || response.status === 200) {
             //alert("Signup successful");
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("first_name", data.first_name);
+            localStorage.setItem("surname", data.surname);
+            localStorage.setItem("email", data.email);
+            localStorage.setItem("student_id", data.student_id)
             window.location.assign("homepage.html");
         } else {
             alert(data.error || "Signup failed");
         }
+
     } catch (error) {
         alert("Something went wrong. Please try again.");
         console.log(error);

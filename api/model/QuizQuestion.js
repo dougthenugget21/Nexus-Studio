@@ -15,7 +15,7 @@ class QuizQuestion{
 
     static async getAll(){
         const response = await db.query("SELECT * FROM quiz_questions")
-
+        
         if (response.rows.length === 0){
             throw new Error("No quiz questions available.")
         }
