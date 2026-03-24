@@ -2,9 +2,10 @@ db = require("../../db/connect")
 
 class QuizQuestion{
 
-    constructor({question_id, category_id, option_1, option_2, option_3, option_4, correct_answer}){
+    constructor({question_id, category_id, question, option_1, option_2, option_3, option_4, correct_answer}){
         this.id = question_id,
         this.category_id = category_id,
+        this.question = question,
         this.option_1 = option_1,
         this.option_2 = option_2,
         this.option_3 = option_3,
@@ -36,7 +37,7 @@ class QuizQuestion{
         if (response.rows.length !== 1){
             throw new Error("No quiz question available with this ID.")
         }
-        return QuizQuestion(response.rows[0])
+        return new QuizQuestion(response.rows[0])
     }
 }
 
