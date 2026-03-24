@@ -15,7 +15,7 @@ async function categoryQuestions(req, res) {
         const quizQuestions = await QuizQuestion.getByCategory(category_id)
         res.status(200).json(quizQuestions)
     } catch(err){
-        res.status(500).json({"error":err.message})
+        res.status(404).json({"error":err.message})
     }
     
 }
@@ -26,7 +26,7 @@ async function questionByID(req, res){
         const quizQuestion = await QuizQuestion.getByID(question_id)
         res.status(200).json(quizQuestion)
     } catch(err){
-        res.status(500).json({"error":err.message})
+        res.status(404).json({"error":err.message})
     }
 }
 
