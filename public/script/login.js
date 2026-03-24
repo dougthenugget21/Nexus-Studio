@@ -38,7 +38,7 @@ form.addEventListener("submit", async (e) => {
 
     const response = await fetch("https://nexus-studio-ipn8.onrender.com/studentdata/login", options);
     //const response = await fetch("http://localhost:3000/studentdata/login", options);
-    console.log(options);
+    //console.log(options);
     const data = await response.json();
 
     if (response.status == 200) {
