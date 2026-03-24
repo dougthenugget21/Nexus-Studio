@@ -37,12 +37,16 @@ form.addEventListener("submit", async (e) => {
     }
 
     const response = await fetch("https://nexus-studio-ipn8.onrender.com/studentdata/login", options);
+    //const response = await fetch("http://localhost:3000/studentdata/login", options);
     console.log(options);
     const data = await response.json();
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("first_name", data.first_name);
+        localStorage.setItem("surname", data.surname);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("student_id", data.student_id)
         //alert("Logged In")
         window.location.assign("homepage.html");
       } else {

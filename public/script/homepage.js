@@ -3,8 +3,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (!token) {
         // Not logged in, so to redirect
-        window.location.replace("login.html");
-        return;
+        /*window.location.replace("login.html");*/
+        //return;
     }
     const firstName = localStorage.getItem("first_name");
 

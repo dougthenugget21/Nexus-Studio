@@ -14,7 +14,7 @@ async function getStudentByEmail(req, res) {
         const match = await bcrypt.compare(data.password, user.password);
         console.log(match)
         if(match) {
-            const payload = {username: user.username}
+            const payload = {username: user.email}
             const sendToken = (err, token) => {
                 if(err) {
                     throw new Error("Error in token generation")
@@ -22,7 +22,10 @@ async function getStudentByEmail(req, res) {
                 res.status(200).json({
                     success:true,
                     token:token,
-                    first_name: user.first_name
+                    first_name: user.first_name,
+                    surname: user.surname,
+                    email: user.email,
+                    student_id: user.student_id
                 });
             }
             jwt.sign(payload, process.env.SECRET_TOKEN, {expiresIn: 3600}, sendToken);
