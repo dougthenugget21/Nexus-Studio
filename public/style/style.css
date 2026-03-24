@@ -32,9 +32,7 @@ body {
     #ffffff 40%  
   );
 }
-.globe {
-  width: 550px;
-}
+
 /* categories */
 .category-card {
   background-color: #d8c4e5 !important;
@@ -130,3 +128,58 @@ body {
   background-color: #6f5889 !important;
   color: white !important;
 }
+
+.progress-card {
+  background-color: #eee6f1;
+}
+
+.progress-side {
+  width: 70px;
+}
+
+/* Optional: tweak Bootstrap primary to your purple */
+.bg-purple {
+  background-color: #7d68a3 !important;
+}
+
+.achievement-card,
+.leaderboard-card {
+  background-color: #eee6f1 !important;
+  border-radius: 0;
+}
+
+.achievement-img {
+  max-height: 180px;
+  object-fit: contain;
+}
+
+.leaderboard-avatar {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  background-color: #f8f3f8;
+  padding: 8px;
+}
+
+.footer-custom {
+  background-color: #8e7aa6; /* soft purple */
+  color: white;
+  margin-top: 40px;
+}
+
+
+.globe {
+  max-width: 550px;
+    width: 550px;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
