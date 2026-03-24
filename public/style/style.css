@@ -32,6 +32,9 @@ body {
     #ffffff 40%  
   );
 }
+.globe {
+  width: 550px;
+}
 
 /* categories */
 .category-card {
@@ -129,6 +132,105 @@ body {
   color: white !important;
 }
 
+
+/* Login Page */
+#login_section.world-background {
+  height: auto;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #a78bc2;
+  padding: 20px;
+}
+
+.login-header {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.login-header h1 {
+  margin-bottom: 8px;
+  color: #6821a9;
+  font-size: 32px;
+}
+
+.login-header p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+#login_section {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-card {
+  background-color: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#form_login label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+#form_login input.form-control {
+  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.login-links {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.login-links a,
+.signup-text a {
+  text-decoration: none;
+  color: #7d5c9d;
+}
+
+.login-links a:hover,
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+.login-btn {
+  width: 100%;
+}
+
+.signup-text {
+  text-align: center;
+  font-size: 14px;
+}
+
+.error-text {
+  color: red;
+  font-size: 13px;
+}
+
+.invalid-rule {
+  color: red;
+  font-size: 13px;
+}
+
+.valid-rule {
+  color: green;
+  font-size: 13px;
+  font-weight: 500;
+}
 .progress-card {
   background-color: #eee6f1;
 }
