@@ -283,15 +283,3 @@ body {
     transform: rotate(360deg);
   }
 }
-
-
-/* sign up */
-.signup-background{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #a78bc2;
-  padding: 50px;
-
-
-}

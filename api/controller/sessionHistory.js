@@ -31,7 +31,7 @@ async function sessionsByID(req, res) {
 
 async function sessionsByStudentID(req, res) {
     try{
-        const student_id = parseInt(req.params.student_id )
+        const student_id = parseInt(req.params.student_id_id )
         const session = await SessionHistory.getBySessionID(student_id)
         res.status(200).json(session)
     } catch (err) {

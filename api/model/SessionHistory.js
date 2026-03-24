@@ -43,8 +43,8 @@ class SessionHistory{
     static async getByStudentID(studentID){
         const response = await db.query("SELECT * FROM session_history WHERE student_id = $1",[studentID])
 
-        if(response.rows.length === 0){
-            throw new Error("Recieving 0 records for this student id.")
+        if(response.rows.length !== 1){
+            throw new Error("Recieving 0 or more than 1 session history entry when 1 should be recieved.")
         }
         return new SessionHistory(response.rows[0])
     }
