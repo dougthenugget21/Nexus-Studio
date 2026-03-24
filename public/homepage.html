@@ -17,51 +17,30 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-white py-2">
     <div class="container">
-      <a class="navbar-brand brand-logo mx-auto d-lg-none" href="#home">GeoGenius 🌍</a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#mainNav"
-        aria-controls="mainNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav w-100 d-flex flex-lg-row justify-content-lg-between align-items-lg-center text-center">
-          <li class="nav-item">
-            <a class="nav-link nav-purple small" href="#leaderboard">Leaderboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-purple small" href="#facts">Facts</a>
-          </li>
-          <li class="nav-item d-none d-lg-block">
-            <a class="nav-link brand-logo py-0" href="#home">GeoGenius 🌍</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-purple small" href="#categories">Start Quiz</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle nav-purple small"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-            >
-              Account
-            </a>
-            <ul class="dropdown-menu text-center">
-              <li><a class="dropdown-item" href="#progress">My Learning</a></li>
-              <li><a class="dropdown-item" href="#achievements">Achievements</a></li>
-              <li><a class="dropdown-item" href="./signup.html">Sign Out</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+      <ul class="navbar-nav w-100 d-flex flex-row justify-content-between align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#leaderboard">Leaderboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#facts">Facts</a>
+        </li>
+        <li class="nav-item brand-item">
+          <a class="nav-link brand-logo" href="./homepage.html">GeoGenius 🌍</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#categories">Start Quiz</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <label id="profile_username"></label>
+          </a>
+          <ul class="dropdown-menu text-center">
+            <li><a class="dropdown-item nav-link" href="#">My Learning</a></li>
+            <li><a class="dropdown-item nav-link" href="#">Achievements</a></li>
+            <li><a class="dropdown-item nav-link" id="login-logout"></a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </nav>
 
