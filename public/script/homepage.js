@@ -1,3 +1,5 @@
+
+
 window.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
 
@@ -13,6 +15,6 @@ window.addEventListener("DOMContentLoaded", () => {
     if (firstName) {
         profileName.textContent = `Hi, ${firstName}!`;
     } else {
-        profileName.textContent = "Hi!";
+        profileName.textContent = "Account";
     }
 });
