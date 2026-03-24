@@ -29,7 +29,7 @@ class Studentdetails {
         const {first_name, surname, email, password} = studentData;
         const response = await db.query("INSERT INTO student_details (first_name, surname, email, password) VALUES ($1, $2, $3, $4) RETURNING student_id;", 
             [first_name, surname, email, password]);
-        console.log(response);
+        //console.log(response);
         const newStudentID = response.rows[0].student_id;
         const newStudent = await Studentdetails.getStudentByID(newStudentID);
         return newStudent;

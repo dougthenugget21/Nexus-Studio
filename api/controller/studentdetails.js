@@ -48,7 +48,29 @@ async function createStudent(req, res) {
         //Hash the password
         data["password"] = await bcrypt.hash(data.password, salt);
         const result = await Studentdetails.createStudent(data);
-        res.status(201).send(result);
+
+        const payload = {
+            email: result.email
+        };
+
+        jwt.sign(
+            payload,
+                process.env.SECRET_TOKEN, { expiresIn: 3600 },
+                (err, token) => {
+                if (err) {
+                    throw new Error("Error in token generation");
+                }
+
+                res.status(201).json({
+                    success:true,
+                    token:token,
+                    first_name: result.first_name,
+                    surname: result.surname,
+                    email: result.email,
+                    student_id: result.student_id
+                });
+            }
+        );
     }
     catch(e) {
         res.status(401).json({error: e.message}); 
