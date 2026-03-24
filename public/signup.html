@@ -1,29 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoGenuis Sign Up</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeoGenius Sign Up</title>
+
+    <script src="./script/signup.js" defer></script>
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 </head>
+
 <body>
-    <header>
-        <h1>Sign Up</h1>
-    </header>
-    <section id = "signup_section">
-        <form id="form_signup">
-            <label for = "first_name">First Name:</label><br/>
-            <input type="text" id="first_name" name ="first_name"/><br/>
-            <label for = "last_name">Last Name:</label><br/>
-            <input type="text" id="last_name" name ="last_name"/><br/>
-            <label for = "last_name">Last Name:</label><br/>
-            <input type="text" id="last_name" name ="last_name"/><br/>
-            <label for="password">Password:</label><br/>
-            <input type="text" id="password" name="password"/><br/>
-            <label for="confirm_password">Confirm Password:</label><br/>
-            <input type="text" id="confirm_password" name="confirm_password"/><br/>
-            <input type="submit" value="Sign Up"/><br/><br/><br/><br/>
-        </form>
-    </section>
-    
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container">
+      <ul class="navbar-nav w-100 d-flex flex-row justify-content-between align-items-center">
+        <li class="nav-item brand-item">
+          <a class="nav-link brand-logo" href="homepage.html">GeoGenius 🌍</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="login-header">
+    <h1>Sign Up</h1>
+  </header>
+
+  <!-- Section -->
+  <section id="signup_section" class="signup-background">
+
+    <div class="login-card">
+
+      <form id="form_signup">
+
+        <!-- First Name -->
+        <label for="first_name">First Name:</label><br/>
+        <input type="text" id="first_name" name="first_name" class="form-control"/><br/>
+        <small id="firstName_error" class="error-text"></small><br/>
+
+        <!-- Last Name -->
+        <label for="last_name">Last Name:</label><br/>
+        <input type="text" id="last_name" name="last_name" class="form-control"/><br/>
+        <small id="lastName_error" class="error-text"></small><br/>
+
+        <!-- Email (added but safe) -->
+        <label for="email">Email:</label><br/>
+        <input type="email" id="email" name="email" class="form-control"/><br/>
+        <small id="email_error" class="error-text"></small><br/>
+
+        <!-- Password -->
+        <label for="password">Password:</label><br/>
+        <input type="password" id="password" name="password" class="form-control"/><br/>
+        <small id="password_error" class="error-text"></small><br/>
+
+        <div class="password-rules">
+            <small id="rule_length">• At least 8 characters</small><br/>
+            <small id="rule_letter">• At least 1 alphabet</small><br/>
+            <small id="rule_number">• At least 1 number</small><br/>
+            <small id="rule_special">• At least 1 special character</small>
+        </div>
+        <br/>
+
+        <!-- Confirm Password -->
+        <label for="confirm_password">Confirm Password:</label><br/>
+        <input type="password" id="confirm_password" name="confirm_password" class="form-control"/><br/>
+        <small id="confirmPassword_error" class="error-text"></small><br/>
+        
+        <!-- Submit -->
+        <input type="submit" value="Sign Up" class="btn category-btn login-btn"/><br/><br/>
+
+        <!-- Link -->
+        <div class="signup-text">
+          <label>Already have an account? </label>
+          <a href="login.html">Log in</a>
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
 </body>
 </html>

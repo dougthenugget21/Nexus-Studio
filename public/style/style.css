@@ -221,6 +221,11 @@ body {
   font-size: 13px;
 }
 
+.password-rules {
+  margin-top: 5px;
+  text-align: left;
+}
+
 .invalid-rule {
   color: red;
   font-size: 13px;
