@@ -49,3 +49,5 @@ class SessionHistory{
         return new SessionHistory(response.rows[0])
     }
 }
+
+module.exports = SessionHistory
