@@ -6,6 +6,7 @@ const globe = Globe()(globeContainer)
 
 globe.width(550);
 globe.height(550);
+globe.pointOfView({ altitude: 1.6 });
 
 globe.controls().autoRotate = true;
 globe.controls().autoRotateSpeed = 0.7;
