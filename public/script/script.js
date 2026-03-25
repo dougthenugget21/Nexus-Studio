@@ -24,27 +24,27 @@ generateBtn.addEventListener("click", () => {
   factText.textContent = facts[randomIndex];
 });
 
-document.getElementById("cat_1").addEventListener("click", function xyx(e) {
+document.getElementById("cat_1").addEventListener("click", function category1(e) {
     //console.log("hi Rums")
     e.preventDefault();
     //console.log("hi Rums")
     window.location.href = `quiz.html?category=1`;
 });
 
-document.getElementById("cat_2").addEventListener("click", function xyx(e) {
+document.getElementById("cat_2").addEventListener("click", function category2(e) {
     //console.log("hi Rums")
     e.preventDefault();
     //console.log("hi Rums")
     window.location.href = `quiz.html?category=2`;
 });
 
-document.getElementById("cat_3").addEventListener("click", function xyx(e) {
+document.getElementById("cat_3").addEventListener("click", function category3(e) {
     //console.log("hi Rums")
     e.preventDefault();
     //console.log("hi Rums")
     window.location.href = `quiz.html?category=3`;
 });
-document.getElementById("cat_4").addEventListener("click", function xyx(e) {
+document.getElementById("cat_4").addEventListener("click", function category4(e) {
     //console.log("hi Rums")
     e.preventDefault();
     //console.log("hi Rums")

@@ -1,6 +1,20 @@
+let currentQuestions = [];
+let currentIndex = 0;
+let currentCorrectAnswer = null;
+let answered = false;
+
 const params = new URLSearchParams(window.location.search);
 const category_id = params.get("category");
 quizQuestionByCategoryFetch(category_id);
+
+// Next button handler
+document.querySelector('.next-button').addEventListener('click', () => {
+    if (currentIndex < currentQuestions.length - 1) {
+        loadQuestion(currentIndex + 1);
+    } else {
+        alert(`Quiz Complete! Final Question Reached.`);
+    }
+});
 
 if (category_id) {
     quizQuestionByCategoryFetch(category_id);
@@ -8,21 +22,10 @@ if (category_id) {
     allQuestionFetch();
 }
 
-
-/*const cat_2 = document.getElementById("cat_2");
-cat_2.addEventListener("click", quizQuestionByCategoryFetch(2))
-
-const cat_3 = document.getElementById("cat_3");
-cat_3.addEventListener("click", quizQuestionByCategoryFetch(3))
-
-const cat_4 = document.getElementById("cat_4");
-cat_4.addEventListener("click", allQuestionFetch(4))*/
-
 // Function to fetch quiz questions by category from api 
 async function quizQuestionByCategoryFetch(category_id){
     try{
-        console.log("hi");
-        const response = await fetch(`https://nexus-studio-ipn8.onrender.com/quizQuestions/category/:${category_id}`)
+        const response = await fetch(`https://nexus-studio-ipn8.onrender.com/quizQuestions/category/${category_id}`)
         const questionArray = await response.json()
         document.getElementById("question").innerText = questionArray[0].question
         document.getElementById("option_1").innerText = questionArray[0].option_1
