@@ -2,7 +2,7 @@ db = require("../../db/connect")
 
 class SessionHistory{
 
-    constructor({}){
+    constructor({session_id, student_id, total_attempts, score, time_taken, test_date}){
         this.session_id = session_id,
         this.student_id = student_id,
         this.total_attempts = total_attempts,
@@ -33,8 +33,8 @@ class SessionHistory{
 
     static async getBySessionID(sessionID){
         const response = await db.query("SELECT * FROM session_history WHERE session_id = $1",[sessionID])
-
         if(response.rows.length !== 1){
+
             throw new Error("Recieving 0 or more than 1 session history entry when 1 should be recieved.")
         }
         return new SessionHistory(response.rows[0])
@@ -42,11 +42,11 @@ class SessionHistory{
 
     static async getByStudentID(studentID){
         const response = await db.query("SELECT * FROM session_history WHERE student_id = $1",[studentID])
-
-        if(response.rows.length !== 1){
-            throw new Error("Recieving 0 or more than 1 session history entry when 1 should be recieved.")
+        //console.log(response)
+        if(response.rows.length === 0){
+            throw new Error("No quiz sessions available for the student")
         }
-        return new SessionHistory(response.rows[0])
+        return response.rows.map(h => new SessionHistory(h))
     }
 }
 
