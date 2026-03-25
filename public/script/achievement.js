@@ -1,4 +1,7 @@
 const div_achievement = document.getElementById("div-achievement");
+const achievement_base_score = 80; //For Quick Thinker calculation
+const on_fire_base_score = 90; //For On Fire calculation
+const perfectionist_score = 95; //For Perfectionist score calculation
 
 window.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
@@ -15,11 +18,21 @@ async function getBySessionID(student_id) {
         //const response = await fetch(`http://localhost:3000/sessionhistory/student/${student_id}`)
         const sessionhistory = await response.json();
         //console.log(sessionhistory)
+        if (sessionhistory.error) {
+            showNoDataMessage("No achievements yet. Keep trying!");
+            return;
+        }
         displayAchievements(sessionhistory)
     }
     catch(e) {
 
     }
+}
+
+function showNoDataMessage(message){
+    div_achievement.innerHTML = `<div class="achievement_empty">
+            <p>${message}</p>
+        </div>`;
 }
 
 function convertTimeToSeconds(time) {
@@ -61,8 +74,6 @@ function calculateAchievements(sess_history) {
     let onFire = false;
     let perfectionist = false;
 
-    const achievement_base_score = 80;
-
     sess_history.sort(function(a, b) {
         return new Date(a.test_date) - new Date(b.test_date);
     });
@@ -98,7 +109,7 @@ function calculateAchievements(sess_history) {
         for (let i = sess_history.length - 3; i < sess_history.length; i++) {
             let score = Number(sess_history[i].score);
 
-            if (score >= 90) {
+            if (score >= on_fire_base_score) {
                 count = count + 1;
             }
         }
@@ -116,7 +127,7 @@ function calculateAchievements(sess_history) {
 
     let averageScore = totalScore / sess_history.length;
 
-    if (averageScore >= 95) {
+    if (averageScore >= perfectionist_score) {
         perfectionist = true;
     }
 
