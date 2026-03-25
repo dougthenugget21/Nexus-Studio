@@ -3,8 +3,8 @@ getBySessionID();
 
 async function getBySessionID() {
     try {
-        //const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/leaderboard/score/`)
-        const response = await fetch(`http://localhost:3000/sessionhistory/leaderboard/score/`)
+        const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/leaderboard/score/`)
+        //const response = await fetch(`http://localhost:3000/sessionhistory/leaderboard/score/`)
         const leaderboard_score = await response.json();
         //console.log(leaderboard_score)
         if (leaderboard_score.error) {
