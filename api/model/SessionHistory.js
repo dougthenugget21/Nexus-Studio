@@ -20,6 +20,34 @@ class SessionHistory{
         return response.rows.map(h => new SessionHistory(h))
     }
 
+    static async getStudentSessionByScore(){
+        const response = await db.query("SELECT AVG(session_history.score) AVG_SCORE, student_details.first_name first_name, student_details.surname, student_details.email FROM session_history JOIN student_details ON session_history.student_id = student_details.student_id GROUP BY student_details.first_name, student_details.surname, student_details.email ORDER BY AVG_SCORE DESC;")
+        if (response.rows.length === 0){
+            throw new Error("No session history available.")
+        }
+        //return response.rows.map(h => new SessionHistory(h))
+        return response.rows.map(h => ({
+            first_name: h.first_name,
+            surname: h.surname,
+            email: h.email,
+            avg_score: parseFloat(h.avg_score),
+        }));
+    }
+    
+    static async getStudentSessionByTimeTaken(){
+        const response = await db.query("SELECT AVG(session_history.time_taken) AVG_TIMETAKEN, student_details.first_name, student_details.surname, student_details.email FROM session_history JOIN student_details ON session_history.student_id = student_details.student_id GROUP BY student_details.first_name, student_details.surname, student_details.email ORDER BY AVG_TIMETAKEN ASC;")
+        if (response.rows.length === 0){
+            throw new Error("No session history available.")
+        }
+        //return response.rows.map(h => new SessionHistory(h))
+        return response.rows.map(h => ({
+            first_name: h.first_name,
+            surname: h.surname,
+            email: h.email,
+            avg_timetaken: parseFloat(h.avg_timetaken),
+        }));
+    }
+
     static async createSession(data){
         if (!data.student_id){throw new Error("Student ID is missing")}
         if (!data.total_attempts){throw new Error("Total Attempts is missing")}
