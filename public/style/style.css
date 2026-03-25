@@ -20,21 +20,6 @@ body {
   font-weight: 700;
   color: #5e4780 !important;
 }
-/* World background */
-.world-background{
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(
-    to bottom,
-    #a78bc2 60%,  
-    #ffffff 40%  
-  );
-}
-.globe {
-  width: 550px;
-}
 
 /* categories */
 .category-card {
@@ -280,14 +265,7 @@ body {
   animation: spin 20s linear infinite;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 
 .signup-background{
   display: flex;
@@ -342,3 +320,22 @@ body {
     transform: scale(1.02);
 }
 
+
+/* world new interactive */
+.hero-globe {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    #a78bc2 60%,
+    #ffffff 40%
+  );
+  overflow: hidden;
+}
+
+#globeViz {
+  width: 550px;
+  height: 550px;
+}
