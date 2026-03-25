@@ -1,6 +1,20 @@
+let currentQuestions = [];
+let currentIndex = 0;
+let currentCorrectAnswer = null;
+let answered = false;
+
 const params = new URLSearchParams(window.location.search);
 const category_id = params.get("category");
 quizQuestionByCategoryFetch(category_id);
+
+// Next button handler
+document.querySelector('.next-button').addEventListener('click', () => {
+    if (currentIndex < currentQuestions.length - 1) {
+        loadQuestion(currentIndex + 1);
+    } else {
+        alert(`Quiz Complete! Final Question Reached.`);
+    }
+});
 
 if (category_id) {
     quizQuestionByCategoryFetch(category_id);
