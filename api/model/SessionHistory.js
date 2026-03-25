@@ -1,8 +1,8 @@
 db = require("../../db/connect")
 
 class SessionHistory{
-
-    constructor({}){
+    //constructor was missing all fields not sure why
+    constructor({session_id,student_id,total_attempts,score,time_taken,test_date}){
         this.session_id = session_id,
         this.student_id = student_id,
         this.total_attempts = total_attempts,
