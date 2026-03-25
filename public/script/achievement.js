@@ -30,7 +30,7 @@ async function getBySessionID(student_id) {
 }
 
 function showNoDataMessage(message){
-    div_achievement.innerHTML = `<div class="achievement_empty">
+    div_achievement.innerHTML = `<div class="mb-4 fw-light">
             <p>${message}</p>
         </div>`;
 }
@@ -49,19 +49,19 @@ function displayAchievements(sess_history) {
     let output = "";
     console.log(result)
     if (result.quickThinker) {
-        output = output + "<p>Quick Thinker 🧠</p>";
+        output = output + `<p class="mb-4 fw-light">Quick Thinker 🧠</p>`;
     }
 
     if (result.onFire) {
-        output += "<p>On Fire 🔥</p>";
+        output += `<p class="mb-4 fw-light">On Fire 🔥</p>`;
     }
 
     if (result.perfectionist) {
-        output += "<p>Perfectionist 🎯</p>";
+        output += `<p class="mb-4 fw-light">Perfectionist 🎯</p>`;
     }
 
     if (!result.quickThinker && !result.onFire && !result.perfectionist) {
-        output += "<p>No achievements yet. Keep trying!</p>";
+        output += `<p class="mb-4 fw-light">No achievements yet. Keep trying!</p>`;
     }
 
     div_achievement.innerHTML = output;

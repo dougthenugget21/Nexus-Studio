@@ -9,6 +9,25 @@ async function allSessions(req, res) {
     }
 }
 
+async function getStudentSessionByScore(req, res) {
+    try{
+        const sessions = await SessionHistory.getStudentSessionByScore()
+        console.log(sessions)
+        res.status(200).json(sessions)
+    } catch (err) {
+        res.status(500).json({"error":err.message})
+    }
+}
+
+async function getStudentSessionByTimeTaken(req, res) {
+    try{
+        const sessions = await SessionHistory.getStudentSessionByTimeTaken()
+        res.status(200).json(sessions)
+    } catch (err) {
+        res.status(500).json({"error":err.message})
+    }
+}
+
 async function create(req, res) {
     try{
         const data = req.body
@@ -39,4 +58,4 @@ async function sessionsByStudentID(req, res) {
     }
 }
 
-module.exports = {allSessions, create, sessionsByID, sessionsByStudentID}
+module.exports = {allSessions, create, sessionsByID, sessionsByStudentID, getStudentSessionByScore, getStudentSessionByTimeTaken}
