@@ -18,6 +18,11 @@ const facts = [
 
 const factText = document.getElementById("fact-text");
 const generateBtn = document.getElementById("generate-btn");
+const progress_section = document.getElementById("progress");
+const achievements_section = document.getElementById("achievements");
+const href_achievements = document.getElementById("href_achievements");
+const href_leaderboard = document.getElementById("href_leaderboard");
+
 
 generateBtn.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * facts.length);
@@ -27,26 +32,49 @@ generateBtn.addEventListener("click", () => {
 document.getElementById("cat_1").addEventListener("click", function category1(e) {
     //console.log("hi Rums")
     e.preventDefault();
-    //console.log("hi Rums")
     window.location.href = `quiz.html?category=1`;
 });
 
 document.getElementById("cat_2").addEventListener("click", function category2(e) {
     //console.log("hi Rums")
     e.preventDefault();
-    //console.log("hi Rums")
     window.location.href = `quiz.html?category=2`;
 });
 
 document.getElementById("cat_3").addEventListener("click", function category3(e) {
     //console.log("hi Rums")
     e.preventDefault();
-    //console.log("hi Rums")
     window.location.href = `quiz.html?category=3`;
 });
 document.getElementById("cat_4").addEventListener("click", function category4(e) {
     //console.log("hi Rums")
     e.preventDefault();
-    //console.log("hi Rums")
     window.location.href = `quiz.html?category=`;
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        // Not logged in, so to redirect
+        /*window.location.replace("login.html");*/
+        //return;
+    }
+    const firstName = localStorage.getItem("first_name");
+
+    const profileName = document.getElementById("profile_username");
+
+    if (firstName) {
+        profileName.textContent = `Hi, ${firstName}!`;
+        progress_section.style.display='block';
+        achievements_section.style.display='block';
+        href_achievements.style.display='block';
+        href_leaderboard.style.display='block';        
+    } else {
+        profileName.textContent = "Account";
+        progress_section.style.display='none';
+        achievements_section.style.display='none';
+        href_achievements.style.display='none';
+        href_leaderboard.style.display='none';
+    }
 });

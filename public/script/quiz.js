@@ -32,7 +32,7 @@ async function quizQuestionByCategoryFetch(category_id){
         document.getElementById("option_2").innerText = questionArray[0].option_2
         document.getElementById("option_3").innerText = questionArray[0].option_3
         document.getElementById("option_4").innerText = questionArray[0].option_4
-        const correct_answer = questionArray[0].answer; 1, 2, 3, 4
+        //const correct_answer = questionArray[0].answer; 1, 2, 3, 4
         return questionArray
     } catch(err){
         console.log("Error fetching questions: ", err);
