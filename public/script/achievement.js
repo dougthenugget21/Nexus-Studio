@@ -30,7 +30,7 @@ async function getBySessionID(student_id) {
 }
 
 function showNoDataMessage(message){
-    div_achievement.innerHTML = `<div class="mb-4 fw-light">
+    div_achievement.innerHTML = `<div class="achievement_empty">
             <p>${message}</p>
         </div>`;
 }
