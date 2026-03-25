@@ -26,7 +26,7 @@ class QuestionHistory{
         if(!data.ans_correctly){throw new Error("Answered correctly is missing.")}
 
         const response = await db.query("INSERT INTO question_history (student_id, session_id, question_id, ans_correctly) VALUES ($1, $2, $3, $4) RETURNING *", [data.student_id, data.session_id, data.question_id, data.ans_correctly])
-        return new QuestionHistory(response)
+        return new QuestionHistory(response.rows[0])
     }
 
     static async getBySessionID(session_id){
@@ -35,7 +35,8 @@ class QuestionHistory{
         if(response.rows.length === 0){
             throw new Error("No question history recieved from this session id.")
         }
-        return response.rows.map(h => {new QuestionHistory(h)})
+        // used to be {} around the new QuestionHistory(h)
+        return response.rows.map(h => new QuestionHistory(h))
     }
 
     static async getByStudentID(student_id){
@@ -44,7 +45,7 @@ class QuestionHistory{
     if(response.rows.length === 0){
         throw new Error("Recieving 0 records for this student id.")
     }
-    return response.rows.map(h => {new QuestionHistory(h)})
+    return response.rows.map(h => new QuestionHistory(h))
     }
 }
 
