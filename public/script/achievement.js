@@ -1,7 +1,7 @@
 const div_achievement = document.getElementById("div-achievement");
-const achievement_base_score = 80; //For Quick Thinker calculation
-const on_fire_base_score = 90; //For On Fire calculation
-const perfectionist_score = 95; //For Perfectionist score calculation
+const achievement_base_time = 80; //For Quick Thinker calculation
+const on_fire_base_score = 80; //For On Fire calculation
+const perfectionist_score = 100; //For Perfectionist score calculation
 const que_per_quiz = 5;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -101,7 +101,7 @@ function calculateAchievements(sess_history) {
         let latestTime = convertTimeToSeconds(latestQuiz.time_taken);
         //console.log("latest time:" + latestTime)
 
-        if (latestTime <= averageTime * (achievement_base_score/100)) {
+        if (latestTime <= averageTime * (achievement_base_time/100)) {
             quickThinker = true;
         }
     }
@@ -180,21 +180,30 @@ async function getDetailsByCategoryIDStudentID(student_id) {
     //let category_id = 1;
     try {
         for (let i=1; i < 4; i++) {
-            const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
-            //const response = await fetch(`http://localhost:3000/sessionhistory/student/${student_id}`)
+            //const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
+            const response = await fetch(`http://localhost:3000/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
             const sessionhistory = await response.json();
             if (sessionhistory.error) {
-                //showNoDataMessage("No progress yet. Keep trying!");
-                return;
-            }
-            if (i == 1) {
-                document.getElementById("div_categor1_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
-            }
-            else if (i == 2) {
-                document.getElementById("div_categor2_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
-            }
-            else { 
-                document.getElementById("div_categor3_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+                //console.log(sessionhistory.error)
+                if (i == 1) {
+                    document.getElementById("div_categor1_score").innerText = "No progress yet. Keep trying!";
+                }
+                else if (i == 2) {
+                    document.getElementById("div_categor2_score").innerText = "No progress yet. Keep trying!";
+                }
+                else { 
+                    document.getElementById("div_categor3_score").innerText = "No progress yet. Keep trying!";
+                }                
+            } else {
+                if (i == 1) {
+                    document.getElementById("div_categor1_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+                }
+                else if (i == 2) {
+                    document.getElementById("div_categor2_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+                }
+                else { 
+                    document.getElementById("div_categor3_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+                }
             }
         }
     }
