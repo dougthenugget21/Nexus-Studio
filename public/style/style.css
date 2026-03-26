@@ -116,18 +116,45 @@ body {
 }
 
 .facts-btn {
-  border: 1px solid #6f5889 !important;
-  color: #6f5889 !important;
-  background-color: transparent !important;
-  border-radius: 20px;
-  padding: 5px 22px;
-  font-size: 0.9rem;
+    padding: 8px 22px !important;
+
+    background-color: #6f42c1 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 7px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: 0.3s ease !important;
+    font-family: Arial, sans-serif !important;
+    display: block !important;
+    margin-bottom: 15px !important;
 }
 
 .facts-btn:hover {
-  background-color: #6f5889 !important;
-  color: white !important;
+     background-color: #5a32a3 !important;
 }
+/* .facts-btn {
+    padding: 5px 22px !important;
+    padding: 10px 20px ;
+    background-color: #6f42c1 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: 0.3s ease !important;
+    font-family: Arial, sans-serif !important;
+    margin-left: auto !important;
+    display: block !important;
+    margin-bottom: 15px !important;
+}
+
+.facts-btn:hover {
+    background-color: #5a32a3 !important;
+} */
+
 
 /* login / signup shared */
 .login-header {
@@ -284,7 +311,7 @@ body {
 }
 
 .bg-purple {
-  background-color: #7d68a3 !important;
+  background-color: #6f42c1 !important;
 }
 
 .achievement-card,
@@ -400,7 +427,7 @@ body {
 .hero-main {
   font-size: 50px;
   font-weight: 700;
-  color: #261146;
+  color: #4d219e;
 
 
 }
@@ -409,7 +436,7 @@ body {
 .hero-sub {
   font-size: 1.1rem;
   font-weight: 500;
-  color: #6b5b8a;
+  color: #4d219e;
   max-width: 500px;
   line-height: 1.5;
 }
