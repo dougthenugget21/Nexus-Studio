@@ -7,20 +7,34 @@ const startTime = performance.now()
 const params = new URLSearchParams(window.location.search);
 const category_id = params.get("category");
 
-
-if (category_id) {
-    quizQuestionByCategoryFetch(category_id);
-} else {
-    allQuestionFetch();
+quizQuestionByCategoryFetch(category_id);
+if (category_id == 1) {
+    document.getElementById("div_Category_name").innerText = "Natural Hazards 🌋"
 }
-
+else if (category_id == 2) {
+    document.getElementById("div_Category_name").innerText = "Human Environments 👣"
+}
+else if(category_id ==3) {
+    document.getElementById("div_Category_name").innerText = "Physical Landscape 🪨"
+}
+else {
+    document.getElementById("div_Category_name").innerText = "Lucky Dip 🔄"
+}
 // Function to fetch quiz questions by category from api 
 async function quizQuestionByCategoryFetch(category_id){
     try{
-        const response = await fetch(`https://nexus-studio-ipn8.onrender.com/quizQuestions/category/${category_id}`)
-        const questionArray = await response.json()
-        currentQuestions = questionArray
-
+        let response = '';
+        let questionArray = [];
+        if (category_id < 4 ) {
+            response = await fetch(`https://nexus-studio-ipn8.onrender.com/quizQuestions/category/${category_id}`)
+            questionArray = await response.json()
+        }
+        else {
+            //response = await fetch(`https://nexus-studio-ipn8.onrender.com/quizquestions/`)
+            questionArray = await randomQuestions()
+            console.log(questionArray)
+        } 
+        currentQuestions = questionArray;
         puttingQuestionsOnThePage(questionArray, currentIndex)
     } catch(err){
         console.log("Error fetching questions: ", err);
