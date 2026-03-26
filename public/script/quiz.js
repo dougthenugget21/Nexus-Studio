@@ -1,20 +1,11 @@
 let currentQuestions = [];
 let currentIndex = 0;
-let currentCorrectAnswer = null;
-let answered = false;
+let currentCorrectAnswer
+let answered
 
 const params = new URLSearchParams(window.location.search);
 const category_id = params.get("category");
-//quizQuestionByCategoryFetch(category_id);
 
-// Next button handler
-document.querySelector('.next-button').addEventListener('click', () => {
-    if (currentIndex < currentQuestions.length - 1) {
-        loadQuestion(currentIndex + 1);
-    } else {
-        alert(`Quiz Complete! Final Question Reached.`);
-    }
-});
 
 if (category_id) {
     quizQuestionByCategoryFetch(category_id);
@@ -27,24 +18,67 @@ async function quizQuestionByCategoryFetch(category_id){
     try{
         const response = await fetch(`https://nexus-studio-ipn8.onrender.com/quizQuestions/category/${category_id}`)
         const questionArray = await response.json()
-        document.getElementById("question").innerText = questionArray[0].question
-        document.getElementById("option_1").innerText = questionArray[0].option_1
-        document.getElementById("option_2").innerText = questionArray[0].option_2
-        document.getElementById("option_3").innerText = questionArray[0].option_3
-        document.getElementById("option_4").innerText = questionArray[0].option_4
-        //const correct_answer = questionArray[0].answer; 1, 2, 3, 4
-        return questionArray
+        currentQuestions = questionArray
+
+        puttingQuestionsOnThePage(questionArray, currentIndex)
     } catch(err){
         console.log("Error fetching questions: ", err);
     }
 }
 
+function puttingQuestionsOnThePage(currentQuestions, currentIndex){
+    let currentCorrectAnswer = currentQuestions[currentIndex].answer
+
+    document.getElementById("question").innerText = currentQuestions[currentIndex].question
+    document.getElementById("option_1").innerText = currentQuestions[currentIndex].option_1
+    document.getElementById("option_2").innerText = currentQuestions[currentIndex].option_2
+    document.getElementById("option_3").innerText = currentQuestions[currentIndex].option_3
+    document.getElementById("option_4").innerText = currentQuestions[currentIndex].option_4    
+
+    document.getElementById("option_1").addEventListener("click", () => answerSelect(1, currentCorrectAnswer))
+    document.getElementById("option_2").addEventListener("click", () => answerSelect(2, currentCorrectAnswer))
+    document.getElementById("option_3").addEventListener("click", () => answerSelect(3, currentCorrectAnswer))
+    document.getElementById("option_4").addEventListener("click", () => answerSelect(4, currentCorrectAnswer))
+}
+
+function answerSelect(theirAns, correctAns){
+    console.log("current correct ans is", correctAns);
+    console.log("User anser is", theirAns);
+
+    if(theirAns === correctAns){
+        console.log("Correct!");
+    } else {
+        console.log("Incorrect!");
+    }
+
+    document.getElementById("option_1").removeEventListener("click", () => answerSelect())
+    document.getElementById("option_2").removeEventListener("click", () => answerSelect())
+    document.getElementById("option_3").removeEventListener("click", () => answerSelect())
+    document.getElementById("option_4").removeEventListener("click", () => answerSelect())
+
+}
+
+
+
+// Next button handler
+document.getElementById('nextButton').addEventListener('click', () => {
+    if (currentIndex < currentQuestions.length - 1) {
+        currentIndex++
+        puttingQuestionsOnThePage(currentQuestions, currentIndex)
+    } else {
+        alert (`Quiz Complete! Final Question Reached.`);
+        window.location.assign("homepage.html")
+    }
+});
+
+
+
 // Function to fetch 5 random quiz questions
 async function allQuestionFetch(){
     try{
         const response = await fetch(`https://nexus-studio-ipn8.onrender.com/quizquestions/`)
-        const questionArry = await response.json()
-        return questionArry
+        const questionArray = await response.json()
+        return questionArray
     } catch(err){
         console.log("Error fetching questions: ", err);
     }
@@ -61,5 +95,3 @@ async function randomQuestions(){
     await console.log(randomQuestions);
     return randomQuestions
 }
-console.log( randomQuestions() )
-console.log(quizQuestionByCategoryFetch(1));
