@@ -1,7 +1,7 @@
 const div_achievement = document.getElementById("div-achievement");
 const achievement_base_time = 80; //For Quick Thinker calculation
 const on_fire_base_score = 80; //For On Fire calculation
-const perfectionist_score = 100; //For Perfectionist score calculation
+const perfectionist_score = 95; //For Perfectionist score calculation
 const que_per_quiz = 5;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -53,19 +53,19 @@ function displayAchievements(sess_history) {
     let output = "";
     console.log(result)
     if (result.quickThinker) {
-        output = output + `<p class="mb-4 fw-light">Quick Thinker 🧠</p>`;
+        output = output + `<p class="mb-4 fw-lighter fs-3 pt-5 px-5">Quick Thinker 🧠</p>`;
     }
 
     if (result.onFire) {
-        output += `<p class="mb-4 fw-light">On Fire 🔥</p>`;
+        output += `<p class="mb-4 fw-lighter fs-3 px-5">On Fire 🔥</p>`;
     }
 
     if (result.perfectionist) {
-        output += `<p class="mb-4 fw-light">Perfectionist 🎯</p>`;
+        output += `<p class="mb-4 fw-lighter fs-3 px-5">Perfectionist 🎯</p>`;
     }
 
     if (!result.quickThinker && !result.onFire && !result.perfectionist) {
-        output += `<p class="mb-4 fw-light">No achievements yet. Keep trying!</p>`;
+        output += `<p class="mb-4 pt-5 fw-lighter fs-3 px-5">No achievements yet. Keep trying!</p>`;
     }
 
     div_achievement.innerHTML = output;

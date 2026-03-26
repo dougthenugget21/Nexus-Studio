@@ -81,6 +81,7 @@ body {
   margin-top: 40px;
 }
 
+
 .section-title {
   font-size: 2rem;
   font-weight: 700;
@@ -88,10 +89,10 @@ body {
 }
 
 .facts-card {
-  background-color: #c8abd9;
+  background-color: #ded0e7;
   border-radius: 30px;
   padding: 20px 30px;
-  border: none;
+  
 }
 
 .funfacts-img {
@@ -107,11 +108,11 @@ body {
   min-height: 160px;
 }
 
-.facts-text {
-  font-size: 30px;
+.learn-facts {
+  font-size: 20px;
   font-weight: 400;
-  color: #3f3152;
-  margin-bottom: 95px;
+  color: #261146;
+  margin-bottom: 90px;
 }
 
 .facts-btn {
@@ -279,7 +280,7 @@ body {
 }
 
 .progress-side {
-  width: 70px;
+  width: 130px;
 }
 
 .bg-purple {
@@ -292,10 +293,9 @@ body {
   border-radius: 0;
 }
 
-.achievement-img {
-  max-height: 180px;
-  object-fit: contain;
-}
+/* .achievement-img {
+  max-height: 500px;
+} */
 
 .leaderboard-avatar {
   width: 70px;
@@ -306,7 +306,7 @@ body {
 }
 
 .footer-custom {
-  background-color: #8e7aa6;
+  background-color: #704b9c;
   color: white;
   margin-top: 40px;
 }
@@ -318,11 +318,15 @@ body {
 }
 
 .tectonic-plates-section {
-  background: linear-gradient(135deg, #f8f9ff 0%, #e0d8f5 100%);
+  background:  #eee6f1;
   border-radius: 24px;
-  padding: 60px 0;
-  margin: 40px 0;
+  padding: 40px;
+  margin: 40px 0; 
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.tectonic-plates-section h2 p {
+  color: #784eb8;
 }
 
 .tectonic-btn {
@@ -364,17 +368,50 @@ body {
 
 /* world new interactive */
 .hero-globe {
-  height: 800px;
+  min-height: 800px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #a78bc2 60%, #ffffff 40%);
+  text-align: center;
+  background: linear-gradient(to bottom, #a285c6 60%, #ffffff 40%);
   overflow: hidden;
+  padding: 40px 20px;
+  gap: 30px;
 }
 
 #globeViz {
   width: 550px;
   height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+/* main heading */
+.hero-main {
+  font-size: 50px;
+  font-weight: 700;
+  color: #261146;
+
+
+}
+
+/* sub text */
+.hero-sub {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #6b5b8a;
+  max-width: 500px;
+  line-height: 1.5;
 }
 
 /* leaderboard */
