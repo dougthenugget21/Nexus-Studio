@@ -2,7 +2,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #f4edff, #ffffff);
+    /* background: linear-gradient(to bottom, #f4edff, #ffffff); */
+    background-image: url("../img/mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
 }
 
 .container {
@@ -190,4 +195,11 @@ body {
      padding:20px; 
      border-radius:10px; 
      text-align:center;
+}
+
+#div_Category_name { 
+    text-align:center;
+    font-size: 30px;
+    font-weight: 700;
+    color: #371964;
 }
