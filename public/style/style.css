@@ -51,7 +51,7 @@ body {
 }
 
 .category-card .card-title {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 500;
   margin-bottom: 16px;
 }
@@ -86,6 +86,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 20px;
+  color: #381869;
 }
 
 .facts-card {
