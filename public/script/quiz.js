@@ -134,5 +134,5 @@ async function endSession(){
         console.log("Error", err);
     }
 
-    //window.location.assign("homepage.html")
+    window.location.assign("homepage.html")
 }
