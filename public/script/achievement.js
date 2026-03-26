@@ -1,12 +1,12 @@
 const div_achievement = document.getElementById("div-achievement");
-const achievement_base_score = 80; //For Quick Thinker calculation
-const on_fire_base_score = 90; //For On Fire calculation
+const achievement_base_time = 80; //For Quick Thinker calculation
+const on_fire_base_score = 80; //For On Fire calculation
 const perfectionist_score = 95; //For Perfectionist score calculation
+const que_per_quiz = 5;
 
 window.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
     const student_id = localStorage.getItem("student_id");
-    //console.log(student_id + "inside 1st event listener")
         if (student_id) {
             getBySessionID(student_id);
             getLeaderBoardData();
@@ -53,19 +53,19 @@ function displayAchievements(sess_history) {
     let output = "";
     console.log(result)
     if (result.quickThinker) {
-        output = output + `<p class="mb-4 fw-light">Quick Thinker 🧠</p>`;
+        output = output + `<p class="mb-4 fw-lighter fs-3 pt-5 px-5">Quick Thinker 🧠</p>`;
     }
 
     if (result.onFire) {
-        output += `<p class="mb-4 fw-light">On Fire 🔥</p>`;
+        output += `<p class="mb-4 fw-lighter fs-3 px-5">On Fire 🔥</p>`;
     }
 
     if (result.perfectionist) {
-        output += `<p class="mb-4 fw-light">Perfectionist 🎯</p>`;
+        output += `<p class="mb-4 fw-lighter fs-3 px-5">Perfectionist 🎯</p>`;
     }
 
     if (!result.quickThinker && !result.onFire && !result.perfectionist) {
-        output += `<p class="mb-4 fw-light">No achievements yet. Keep trying!</p>`;
+        output += `<p class="mb-4 pt-5 fw-lighter fs-3 px-5">No achievements yet. Keep trying!</p>`;
     }
 
     div_achievement.innerHTML = output;
@@ -101,7 +101,7 @@ function calculateAchievements(sess_history) {
         let latestTime = convertTimeToSeconds(latestQuiz.time_taken);
         //console.log("latest time:" + latestTime)
 
-        if (latestTime <= averageTime * (achievement_base_score/100)) {
+        if (latestTime <= averageTime * (achievement_base_time/100)) {
             quickThinker = true;
         }
     }
@@ -164,13 +164,50 @@ async function getLeaderBoardData() {
 function displayLeaderboard(leaderboard_score) {
     let output = "";
     //console.log(leaderboard_score.length)
-    output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 1"> ${leaderboard_score[0].first_name} ${leaderboard_score[0].surname} <p>`;
+    output = output + `<p class="rounded-circle leaderboard-avatar text-center pt-4 fw-medium fst-italic leaderboard-profile"> ${leaderboard_score[0].first_name.charAt(0).toUpperCase()}${leaderboard_score[0].surname.charAt(0).toUpperCase()} <p>`;
     if (leaderboard_score.length > 1 ) {
-        output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 2"> ${leaderboard_score[1].first_name} ${leaderboard_score[1].surname} <p>`;
+        output = output + `<p class="rounded-circle leaderboard-avatar text-center pt-4 fw-medium fst-italic leaderboard-profile"> ${leaderboard_score[1].first_name.charAt(0).toUpperCase()}${leaderboard_score[1].surname.charAt(0).toUpperCase()} <p>`;
     }
     if (leaderboard_score.length > 2 ) {
-        output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 3"> ${leaderboard_score[2].first_name} ${leaderboard_score[2].surname} <p>`;
+        output = output + `<p class="rounded-circle leaderboard-avatar text-center pt-4 fw-medium fst-italic leaderboard-profile"> ${leaderboard_score[2].first_name.charAt(0).toUpperCase()}${leaderboard_score[2].surname.charAt(0).toUpperCase()} <p>`;
     }
     //console.log(output)
     div_leaderboard.innerHTML = output;
+}
+
+//Track your progress
+async function getDetailsByCategoryIDStudentID(student_id) {
+    //let category_id = 1;
+    try {
+        for (let i=1; i < 4; i++) {
+            const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
+            //const response = await fetch(`http://localhost:3000/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
+            const sessionhistory = await response.json();
+            if (sessionhistory.error) {
+                //console.log(sessionhistory.error)
+                if (i == 1) {
+                    document.getElementById("div_categor1_score").innerText = "No progress yet. Keep trying!";
+                }
+                else if (i == 2) {
+                    document.getElementById("div_categor2_score").innerText = "No progress yet. Keep trying!";
+                }
+                else { 
+                    document.getElementById("div_categor3_score").innerText = "No progress yet. Keep trying!";
+                }                
+            } else {
+                if (i == 1) {
+                    document.getElementById("div_categor1_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+                }
+                else if (i == 2) {
+                    document.getElementById("div_categor2_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+                }
+                else { 
+                    document.getElementById("div_categor3_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+                }
+            }
+        }
+    }
+    catch(e) {
+
+    }
 }

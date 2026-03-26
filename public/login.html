@@ -12,41 +12,47 @@
 </head>
 <body>
 <!-- navbar section-->
-  <nav class="navbar navbar-expand-lg custom-navbar">
+   <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container">
-      <ul class="navbar-nav w-100 d-flex flex-row justify-content-between align-items-center">
+      <ul class="navbar-nav mx-auto text-center">
         <li class="nav-item brand-item">
-          <a class="nav-link brand-logo" href="homepage.html">GeoGenius 🌍</a>
+          <a class="nav-link brand-logo" href="./homepage.html">GeoGenius 🌍</a>
         </li>
       </ul>
     </div>
   </nav>
-    <header class = "login-header">
-        <h1>Log In</h1>
-    </header>
-    <section id = "login_section" class="world-background">
-        <div class="login-card">
-            <form id="form_login">
-                <label for = "email">Email:</label><br/>
-                <input type="email" id="email" name ="email" class="form-control"/><br/>
-                <small id ="email_error" class ="error-text"></small><br/>
+  <!-- login section -->
+<section id="login_section">
+  <div class="login-card">
+    <h1 class="text-center mb-4">Log In</h1>
 
-                <label for="password">Password:</label><br/>
-                <input type="password" id="password" name="password" class="form-control"/><br/>
-                <small id ="password_error" class = "error-text"></small>
+    <form id="form_login">
+      <div class="mb-3">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" />
+        <small id="email_error" class="error-text"></small>
+      </div>
 
-                <br/>
-                <div class="login-links">
-                    <a href="forgot_password.html" >Forgot Password?</a> <br/>
-                </div>
-                <input type="submit" value="Login" class="btn category-btn login-btn"/><br/><br/><br/><br/>
-                <div class="signup-text">
-                    <label>Don't have an account? </label>
-                    <a href="signup.html">Sign up</a>
-                </div>
-            </form>
-        </div>
-    </section>
+      <div class="mb-3">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="form-control" />
+        <small id="password_error" class="error-text"></small>
+      </div>
+
+      <div class="login-links">
+        <a href="forgot_password.html">Forgot Password?</a>
+      </div>
+
+      <input type="submit" value="Login" class="btn login-btn" />
+
+      <div class="signup-text">
+        <span>Don't have an account? </span>
+        <a href="signup.html">Sign up</a>
+      </div>
+    </form>
+  </div>
+</section>
+
     
 </body>
 </html>

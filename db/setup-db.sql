@@ -76,7 +76,7 @@ CREATE TABLE question_history (
     quesiton_id SMALLINT,
     ans_correctly BOOLEAN,
     PRIMARY KEY (id),
-    FOREIGN KEY (session_id) REFERENCES student_details,
+    FOREIGN KEY (student_id) REFERENCES student_details,
     FOREIGN KEY (session_id) REFERENCES session_history,
     FOREIGN KEY (quesiton_id) REFERENCES quiz_questions
 );
