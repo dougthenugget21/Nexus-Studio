@@ -3,9 +3,9 @@ const QuizQuestion = require("../../../api/model/QuizQuestion")
 const db = require("../../../db/connect")
 
 describe("QuizQuestion", () => {
-    beforeEach(() => jest.clearAllMocks())
+    beforeEach(() => {jest.clearAllMocks()})
 
-    afterAll(() => jest.resetAllMocks())
+    afterAll(() => {jest.resetAllMocks()})
 
     describe("getAll", () => {
         it("resolves with quiz questions on successful db query", async () => {
