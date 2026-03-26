@@ -2,11 +2,11 @@ const div_achievement = document.getElementById("div-achievement");
 const achievement_base_score = 80; //For Quick Thinker calculation
 const on_fire_base_score = 90; //For On Fire calculation
 const perfectionist_score = 95; //For Perfectionist score calculation
+const que_per_quiz = 5;
 
 window.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
     const student_id = localStorage.getItem("student_id");
-    //console.log(student_id + "inside 1st event listener")
         if (student_id) {
             getBySessionID(student_id);
             getLeaderBoardData();
@@ -173,4 +173,32 @@ function displayLeaderboard(leaderboard_score) {
     }
     //console.log(output)
     div_leaderboard.innerHTML = output;
+}
+
+//Track your progress
+async function getDetailsByCategoryIDStudentID(student_id) {
+    //let category_id = 1;
+    try {
+        for (let i=1; i < 4; i++) {
+            const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
+            //const response = await fetch(`http://localhost:3000/sessionhistory/student/${student_id}`)
+            const sessionhistory = await response.json();
+            if (sessionhistory.error) {
+                //showNoDataMessage("No progress yet. Keep trying!");
+                return;
+            }
+            if (i == 1) {
+                document.getElementById("div_categor1_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+            }
+            else if (i == 2) {
+                document.getElementById("div_categor2_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+            }
+            else { 
+                document.getElementById("div_categor3_score").innerText = parseInt((que_per_quiz * sessionhistory.score) / 100) + " / " + que_per_quiz;
+            }
+        }
+    }
+    catch(e) {
+
+    }
 }
