@@ -55,12 +55,14 @@ CREATE TABLE quiz_questions (
 CREATE TABLE session_history (
     session_id SMALLINT GENERATED ALWAYS AS IDENTITY,
     student_id SMALLINT,
+    category_id SMALLINT,
     total_attempts SMALLINT,
     score DECIMAL,
     time_taken TIME,
     test_date TIMESTAMP,
     PRIMARY KEY (session_id),
-    FOREIGN KEY (student_id) REFERENCES student_details
+    FOREIGN KEY (student_id) REFERENCES student_details,
+    FOREIGN KEY (category_id) REFERENCES quiz_categories
 );
 
 --

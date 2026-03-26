@@ -6,19 +6,22 @@ const perfectionist_score = 95; //For Perfectionist score calculation
 window.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
     const student_id = localStorage.getItem("student_id");
+    //console.log(student_id + "inside 1st event listener")
         if (student_id) {
-            console.log(student_id)
             getBySessionID(student_id);
+            getLeaderBoardData();
+            getDetailsByCategoryIDStudentID(student_id);
         }
 });
 
+//Achievements
 async function getBySessionID(student_id) {
     try {
         const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/student/${student_id}`)
         //const response = await fetch(`http://localhost:3000/sessionhistory/student/${student_id}`)
         const sessionhistory = await response.json();
-        //console.log(sessionhistory)
         if (sessionhistory.error) {
+            //console.log("error in getBySessionID")
             showNoDataMessage("No achievements yet. Keep trying!");
             return;
         }
@@ -30,6 +33,7 @@ async function getBySessionID(student_id) {
 }
 
 function showNoDataMessage(message){
+    console.log("showNoDataMessage" + message)
     div_achievement.innerHTML = `<div class="achievement_empty">
             <p>${message}</p>
         </div>`;
@@ -136,4 +140,37 @@ function calculateAchievements(sess_history) {
         onFire: onFire,
         perfectionist: perfectionist
     };
+}
+
+//Leaderboard
+async function getLeaderBoardData() {
+    try {
+        const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/leaderboard/score/`)
+        //const response = await fetch(`http://localhost:3000/sessionhistory/leaderboard/score/`)
+        const leaderboard_score = await response.json();
+        //console.log(leaderboard_score)
+        if (leaderboard_score.error) {
+            showNoDataMessage("No student data available yet.");
+            return;
+        }
+        //console.log(leaderboard_score)
+        displayLeaderboard(leaderboard_score)
+    }
+    catch(e) {
+
+    }
+}
+
+function displayLeaderboard(leaderboard_score) {
+    let output = "";
+    //console.log(leaderboard_score.length)
+    output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 1"> ${leaderboard_score[0].first_name} ${leaderboard_score[0].surname} <p>`;
+    if (leaderboard_score.length > 1 ) {
+        output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 2"> ${leaderboard_score[1].first_name} ${leaderboard_score[1].surname} <p>`;
+    }
+    if (leaderboard_score.length > 2 ) {
+        output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 3"> ${leaderboard_score[2].first_name} ${leaderboard_score[2].surname} <p>`;
+    }
+    //console.log(output)
+    div_leaderboard.innerHTML = output;
 }

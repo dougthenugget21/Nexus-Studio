@@ -52,10 +52,30 @@ async function sessionsByStudentID(req, res) {
     try{
         const student_id = parseInt(req.params.student_id )
         const session = await SessionHistory.getByStudentID(student_id)
+        //console.log(session);
         res.status(200).json(session)
     } catch (err) {
         res.status(404).json({"error":err.message})
     }
 }
 
-module.exports = {allSessions, create, sessionsByID, sessionsByStudentID, getStudentSessionByScore, getStudentSessionByTimeTaken}
+async function getByStudentIDCategoryID(req, res) {
+    try{
+        const student_id = parseInt(req.query.student_id )
+        const category_id = parseInt(req.query.category_id )
+        const session = await SessionHistory.getByStudentIDCategoryID(student_id, category_id)
+        res.status(200).json(session)
+    } catch (err) {
+        res.status(404).json({"error":err.message})
+    }
+}
+
+module.exports = {
+    allSessions, 
+    create, 
+    sessionsByID, 
+    sessionsByStudentID, 
+    getStudentSessionByScore, 
+    getStudentSessionByTimeTaken,
+    getByStudentIDCategoryID
+}
