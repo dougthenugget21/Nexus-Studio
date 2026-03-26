@@ -19,6 +19,7 @@ else if(category_id ==3) {
 }
 else {
     document.getElementById("div_Category_name").innerText = "Lucky Dip 🔄"
+}
 //get images based on cat_id:
 const quizImage = document.getElementById("quiz-category-image");
 
@@ -91,7 +92,7 @@ function puttingQuestionsOnThePage(currentQuestions, currentIndex){
     document.getElementById("option_4").onclick = () => answerSelect(4, currentCorrectAnswer)
 }
 
-function answerSelect(theirAns, correctAns){
+function answerSelect(theirAns, correctAns) {
 
     if(Number(theirAns) === Number(correctAns)){
         document.getElementById(`option_${theirAns}`).style.backgroundColor = "lime"
@@ -109,8 +110,6 @@ function answerSelect(theirAns, correctAns){
     document.getElementById("nextButton").disabled = false
     document.getElementById("nextButton").style.backgroundColor = "#4c1d95"
 }
-
-
 
 // Next button handler
 document.getElementById('nextButton').addEventListener('click', () => {
