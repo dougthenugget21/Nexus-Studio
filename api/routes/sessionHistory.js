@@ -5,7 +5,7 @@ const sessionHistoryController = require("../controller/sessionHistory")
 const sessionHistoryRouter = Router()
 
 sessionHistoryRouter.get("/", sessionHistoryController.allSessions)
-sessionHistoryRouter.post("/", sessionHistoryController.create)
+sessionHistoryRouter.post("/create", sessionHistoryController.create)
 sessionHistoryRouter.get("/student/:student_id", sessionHistoryController.sessionsByStudentID)
 sessionHistoryRouter.get("/leaderboard/score", sessionHistoryController.getStudentSessionByScore)
 sessionHistoryRouter.get("/leaderboard/timetaken", sessionHistoryController.getStudentSessionByTimeTaken)

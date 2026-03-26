@@ -13,6 +13,8 @@ const ruleSpecial = document.getElementById("rule_special");
 email.addEventListener("input", validateEmail);
 password.addEventListener("input", validatePassword);
 
+const redirectPage = localStorage.getItem("redirectAfterLogin");
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const isEmailValid = validateEmail();
@@ -38,7 +40,6 @@ form.addEventListener("submit", async (e) => {
 
     const response = await fetch("https://nexus-studio-ipn8.onrender.com/studentdata/login", options);
     //const response = await fetch("http://localhost:3000/studentdata/login", options);
-    //console.log(options);
     const data = await response.json();
 
     if (response.status == 200) {
@@ -48,7 +49,13 @@ form.addEventListener("submit", async (e) => {
         localStorage.setItem("email", data.email);
         localStorage.setItem("student_id", data.student_id)
         //alert("Logged In")
-        window.location.assign("homepage.html");
+        if (redirectPage) {
+            localStorage.removeItem("redirectAfterLogin");
+            window.location.href = redirectPage;
+        } else {
+            window.location.href = "homepage.html";
+        }
+
       } else {
         alert(data.error);
       }

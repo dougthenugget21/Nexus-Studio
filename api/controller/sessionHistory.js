@@ -30,6 +30,7 @@ async function getStudentSessionByTimeTaken(req, res) {
 
 async function create(req, res) {
     try{
+        //console.log("Hi from Controller")
         const data = req.body
         const newSession = await SessionHistory.createSession(data)
         res.status(201).json(newSession)
