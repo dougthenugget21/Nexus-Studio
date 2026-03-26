@@ -5,7 +5,7 @@ let answered = false;
 
 const params = new URLSearchParams(window.location.search);
 const category_id = params.get("category");
-quizQuestionByCategoryFetch(category_id);
+//quizQuestionByCategoryFetch(category_id);
 
 // Next button handler
 document.querySelector('.next-button').addEventListener('click', () => {
