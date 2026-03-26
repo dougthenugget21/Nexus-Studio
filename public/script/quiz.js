@@ -153,14 +153,9 @@ async function endSession(){
         console.log("Error", err);
     }
 
-<<<<<<< HEAD
-    window.location.assign("homepage.html")
-}
-=======
     //window.location.assign("homepage.html")
 }
 
 document.getElementById("okBtn").addEventListener("click", () => {
     window.location.assign("homepage.html");
 });
->>>>>>> 6ec3288e89e073130ffee49ac943b0b2330f2734
