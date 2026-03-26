@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #f4edff, #ffffff);
+  background: linear-gradient(to bottom, #ffffff, #ffffff);
 }
 
 /* navbar */
@@ -375,4 +375,11 @@ body {
 #globeViz {
   width: 550px;
   height: 550px;
+}
+
+/* leaderboard */
+.leaderboard-avatar{
+  background-color: #af9bb1;
+  font-size: 16px;
+  color: #5a465b;
 }
