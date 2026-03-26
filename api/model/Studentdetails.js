@@ -27,6 +27,7 @@ class Studentdetails {
 
     static async createStudent(studentData) {
         const {first_name, surname, email, password} = studentData;
+        if(!studentData.first_name){throw new Error("Student name is missing")}
         const response = await db.query("INSERT INTO student_details (first_name, surname, email, password) VALUES ($1, $2, $3, $4) RETURNING student_id;", 
             [first_name, surname, email, password]);
         //console.log(response);
