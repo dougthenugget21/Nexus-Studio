@@ -17,9 +17,9 @@ const mockStatus = jest.fn(() => ({
 const mockRes = { status: mockStatus };
 
 describe("QuizQuestions Controller", () => {
-    beforeEach(() => jest.clearAllMocks())
+    beforeEach(() => {jest.clearAllMocks()})
 
-    afterAll(() => jest.resetAllMocks())
+    afterAll(() => {jest.resetAllMocks()})
 
     describe("allQuestions", () => {
         it("returns all quiz questions with status code 200", async () => {
