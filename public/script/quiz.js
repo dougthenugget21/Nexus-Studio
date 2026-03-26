@@ -20,6 +20,7 @@ else if(category_id ==3) {
 else {
     document.getElementById("div_Category_name").innerText = "Lucky Dip 🔄"
 }
+
 //get images based on cat_id:
 const quizImage = document.getElementById("quiz-category-image");
 
@@ -46,13 +47,6 @@ function setCategoryImage(category_id) {
 
 setCategoryImage(category_id);
 
-
-
-if (category_id) {
-    quizQuestionByCategoryFetch(category_id);
-} else {
-    allQuestionFetch();
-}
 // Function to fetch quiz questions by category from api 
 async function quizQuestionByCategoryFetch(category_id){
     try{
@@ -67,7 +61,7 @@ async function quizQuestionByCategoryFetch(category_id){
             questionArray = await randomQuestions()
             console.log(questionArray)
         } 
-        currentQuestions = questionArray;
+        currentQuestions = questionArray
         puttingQuestionsOnThePage(questionArray, currentIndex)
     } catch(err){
         console.log("Error fetching questions: ", err);
@@ -76,7 +70,7 @@ async function quizQuestionByCategoryFetch(category_id){
 
 function puttingQuestionsOnThePage(currentQuestions, currentIndex){
     let currentCorrectAnswer = currentQuestions[currentIndex].answer
-
+    //console.log(currentCorrectAnswer)
     document.getElementById("nextButton").disabled = true
     document.getElementById("nextButton").style.backgroundColor = "rgba(255,255,255,0.35)"
 
@@ -86,17 +80,18 @@ function puttingQuestionsOnThePage(currentQuestions, currentIndex){
     document.getElementById("option_3").innerText = currentQuestions[currentIndex].option_3
     document.getElementById("option_4").innerText = currentQuestions[currentIndex].option_4    
 
-    document.getElementById("option_1").addEventListener("click", () => answerSelect(1, currentCorrectAnswer))
-    document.getElementById("option_2").addEventListener("click", () => answerSelect(2, currentCorrectAnswer))
-    document.getElementById("option_3").addEventListener("click", () => answerSelect(3, currentCorrectAnswer))
-    document.getElementById("option_4").addEventListener("click", () => answerSelect(4, currentCorrectAnswer))
+    document.getElementById("option_1").onclick = () => answerSelect(1, currentCorrectAnswer)
+    document.getElementById("option_2").onclick = () => answerSelect(2, currentCorrectAnswer)
+    document.getElementById("option_3").onclick = () => answerSelect(3, currentCorrectAnswer)
+    document.getElementById("option_4").onclick = () => answerSelect(4, currentCorrectAnswer)
 }
 
-function answerSelect(theirAns, correctAns) {
+function answerSelect(theirAns, correctAns){
 
-    if(theirAns === correctAns){
+    if(Number(theirAns) === Number(correctAns)){
         document.getElementById(`option_${theirAns}`).style.backgroundColor = "lime"
-        score++
+        score++;
+        //console.log(score)
     } else {
         document.getElementById(`option_${theirAns}`).style.backgroundColor = "red"
     }
@@ -109,6 +104,8 @@ function answerSelect(theirAns, correctAns) {
     document.getElementById("nextButton").disabled = false
     document.getElementById("nextButton").style.backgroundColor = "#4c1d95"
 }
+
+
 
 // Next button handler
 document.getElementById('nextButton').addEventListener('click', () => {
@@ -151,29 +148,47 @@ async function randomQuestions(){
         randomQuestions.push(questionArray[index])
         questionArray.splice(index, 1)
     }
-    await console.log(randomQuestions);
+    //await console.log(randomQuestions);
     return randomQuestions
 }
 
 async function endSession(){
-    alert (`Quiz Complete! Final Question Reached.`);
+    //alert (`Quiz Complete! Final Question Reached.`);
+    document.getElementById("resultPopup").style.display = "flex";
+    document.getElementById("finalScore").innerText = `Your Score: ${score} / ${currentQuestions.length}`;
     const endTime = performance.now()
-    const timeTaken = endTime - startTime
+    const duration = endTime - startTime;
+    let seconds = Math.floor(duration / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+
+    seconds = seconds % 60;
+    minutes = minutes % 60;
+
+    const timeTaken =  (hours < 10 ? "0" + hours : hours) + ":" +
+           (minutes < 10 ? "0" + minutes : minutes) + ":" +
+           (seconds < 10 ? "0" + seconds : seconds);
+
     const date = new Date().toISOString()
-    console.log(date);
+
     try{
-        const response = await fetch("https://nexus-studio-ipn8.onrender.com/sessionhistory/", {
+        const options = {
             method: "POST",
-            body: {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
                 student_id: localStorage.getItem("student_id"),
                 category_id: category_id,
                 total_attempts: 1,
-                score: (score*20),
-                time_taken: Math.floor(timeTaken*0.001),
+                score: (100 * score) / 5,
+                time_taken: timeTaken,
                 test_date: date
-            }})
-        const data = response.json()
-        console.log(data);
+            })
+        };
+        const response = await fetch("https://nexus-studio-ipn8.onrender.com/sessionhistory/create", options)
+        //const response = await fetch("http://localhost:3000/sessionhistory/create", options)
+        const data = await response.json()
         return data
     }catch(err){
         console.log("Error", err);
@@ -181,3 +196,7 @@ async function endSession(){
 
     //window.location.assign("homepage.html")
 }
+
+document.getElementById("okBtn").addEventListener("click", () => {
+    window.location.assign("homepage.html");
+});

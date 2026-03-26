@@ -27,11 +27,12 @@ class Studentdetails {
 
     static async createStudent(studentData) {
         const {first_name, surname, email, password} = studentData;
-        const response = await db.query("INSERT INTO student_details (first_name, surname, email, password) VALUES ($1, $2, $3, $4) RETURNING student_id;", 
+        if(!studentData.first_name){throw new Error("Student name is missing")};
+        const response = await db.query("INSERT INTO student_details (first_name, surname, email, password) VALUES ($1, $2, $3, $4) RETURNING *;", 
             [first_name, surname, email, password]);
         //console.log(response);
-        const newStudentID = response.rows[0].student_id;
-        const newStudent = await Studentdetails.getStudentByID(newStudentID);
+        const newStudent = response.rows[0];
+        //const newStudent = await Studentdetails.getStudentByID(newStudentID);
         return newStudent;
     }
 }
