@@ -24,7 +24,7 @@ describe("Category Controller", () => {
     describe("allCategories", () => {
         it("", async () => {
             const mockCategories = ["c1", "c2", "c3"]
-            jest.spyOn(Category, "allCategories").mockResolvedValueOnce(mockCategories)
+            jest.spyOn(Category, "getAll").mockResolvedValueOnce(mockCategories)
 
             await categoriesController.allCategories(null, mockRes)
 
