@@ -75,7 +75,7 @@ async function quizQuestionByCategoryFetch(category_id){
 
 function puttingQuestionsOnThePage(currentQuestions, currentIndex){
     let currentCorrectAnswer = currentQuestions[currentIndex].answer
-    //console.log(currentCorrectAnswer)
+
     document.getElementById("nextButton").disabled = true
     document.getElementById("nextButton").style.backgroundColor = "rgba(255,255,255,0.35)"
 
@@ -85,18 +85,17 @@ function puttingQuestionsOnThePage(currentQuestions, currentIndex){
     document.getElementById("option_3").innerText = currentQuestions[currentIndex].option_3
     document.getElementById("option_4").innerText = currentQuestions[currentIndex].option_4    
 
-    document.getElementById("option_1").onclick = () => answerSelect(1, currentCorrectAnswer)
-    document.getElementById("option_2").onclick = () => answerSelect(2, currentCorrectAnswer)
-    document.getElementById("option_3").onclick = () => answerSelect(3, currentCorrectAnswer)
-    document.getElementById("option_4").onclick = () => answerSelect(4, currentCorrectAnswer)
+    document.getElementById("option_1").addEventListener("click", () => answerSelect(1, currentCorrectAnswer))
+    document.getElementById("option_2").addEventListener("click", () => answerSelect(2, currentCorrectAnswer))
+    document.getElementById("option_3").addEventListener("click", () => answerSelect(3, currentCorrectAnswer))
+    document.getElementById("option_4").addEventListener("click", () => answerSelect(4, currentCorrectAnswer))
 }
 
 function answerSelect(theirAns, correctAns){
 
-    if(Number(theirAns) === Number(correctAns)){
+    if(theirAns === correctAns){
         document.getElementById(`option_${theirAns}`).style.backgroundColor = "lime"
-        score++;
-        //console.log(score)
+        score++
     } else {
         document.getElementById(`option_${theirAns}`).style.backgroundColor = "red"
     }
@@ -153,47 +152,29 @@ async function randomQuestions(){
         randomQuestions.push(questionArray[index])
         questionArray.splice(index, 1)
     }
-    //await console.log(randomQuestions);
+    await console.log(randomQuestions);
     return randomQuestions
 }
 
 async function endSession(){
-    //alert (`Quiz Complete! Final Question Reached.`);
-    document.getElementById("resultPopup").style.display = "flex";
-    document.getElementById("finalScore").innerText = `Your Score: ${score} / ${currentQuestions.length}`;
+    alert (`Quiz Complete! Final Question Reached.`);
     const endTime = performance.now()
-    const duration = endTime - startTime;
-    let seconds = Math.floor(duration / 1000);
-    let minutes = Math.floor(seconds / 60);
-    let hours = Math.floor(minutes / 60);
-
-    seconds = seconds % 60;
-    minutes = minutes % 60;
-
-    const timeTaken =  (hours < 10 ? "0" + hours : hours) + ":" +
-           (minutes < 10 ? "0" + minutes : minutes) + ":" +
-           (seconds < 10 ? "0" + seconds : seconds);
-
+    const timeTaken = endTime - startTime
     const date = new Date().toISOString()
-
+    console.log(date);
     try{
-        const options = {
+        const response = await fetch("https://nexus-studio-ipn8.onrender.com/sessionhistory/", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
+            body: {
                 student_id: localStorage.getItem("student_id"),
                 category_id: category_id,
                 total_attempts: 1,
-                score: (100 * score) / 5,
-                time_taken: timeTaken,
+                score: (score*20),
+                time_taken: Math.floor(timeTaken*0.001),
                 test_date: date
-            })
-        };
-        const response = await fetch("https://nexus-studio-ipn8.onrender.com/sessionhistory/create", options)
-        //const response = await fetch("http://localhost:3000/sessionhistory/create", options)
-        const data = await response.json()
+            }})
+        const data = response.json()
+        console.log(data);
         return data
     }catch(err){
         console.log("Error", err);
@@ -201,7 +182,3 @@ async function endSession(){
 
     //window.location.assign("homepage.html")
 }
-
-document.getElementById("okBtn").addEventListener("click", () => {
-    window.location.assign("homepage.html");
-});
