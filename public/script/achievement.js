@@ -164,12 +164,12 @@ async function getLeaderBoardData() {
 function displayLeaderboard(leaderboard_score) {
     let output = "";
     //console.log(leaderboard_score.length)
-    output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 1"> ${leaderboard_score[0].first_name} ${leaderboard_score[0].surname} <p>`;
+    output = output + `<p class="rounded-circle leaderboard-avatar text-center pt-4 fw-medium fst-italic leaderboard-profile"> ${leaderboard_score[0].first_name.charAt(0).toUpperCase()}${leaderboard_score[0].surname.charAt(0).toUpperCase()} <p>`;
     if (leaderboard_score.length > 1 ) {
-        output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 2"> ${leaderboard_score[1].first_name} ${leaderboard_score[1].surname} <p>`;
+        output = output + `<p class="rounded-circle leaderboard-avatar text-center pt-4 fw-medium fst-italic leaderboard-profile"> ${leaderboard_score[1].first_name.charAt(0).toUpperCase()}${leaderboard_score[1].surname.charAt(0).toUpperCase()} <p>`;
     }
     if (leaderboard_score.length > 2 ) {
-        output = output + `<p class="rounded-circle leaderboard-avatar" alt="leader 3"> ${leaderboard_score[2].first_name} ${leaderboard_score[2].surname} <p>`;
+        output = output + `<p class="rounded-circle leaderboard-avatar text-center pt-4 fw-medium fst-italic leaderboard-profile"> ${leaderboard_score[2].first_name.charAt(0).toUpperCase()}${leaderboard_score[2].surname.charAt(0).toUpperCase()} <p>`;
     }
     //console.log(output)
     div_leaderboard.innerHTML = output;
