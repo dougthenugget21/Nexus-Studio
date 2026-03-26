@@ -7,6 +7,33 @@ const startTime = performance.now()
 const params = new URLSearchParams(window.location.search);
 const category_id = params.get("category");
 
+//get images based on cat_id:
+const quizImage = document.getElementById("quiz-category-image");
+
+function setCategoryImage(category_id) {
+    if (!quizImage) return;
+
+    if (category_id === "1") {
+        quizImage.src = "./img/volcano.webp";
+        quizImage.alt = "Natural Hazards";
+    } else if (category_id === "2") {
+        quizImage.src = "./img/human-environment.webp";
+        quizImage.alt = "Human Environments";
+    } else if (category_id === "3") {
+        quizImage.src = "./img/physical.jpg";
+        quizImage.alt = "Physical Landscape";
+    } else if (category_id === "4") {
+        quizImage.src = "./img/random-cat.jpg";
+        quizImage.alt = "Lucky Dip";
+    } else {
+        quizImage.src = "./img/world.png";
+        quizImage.alt = "World";
+    }
+}
+
+setCategoryImage(category_id);
+
+
 
 if (category_id) {
     quizQuestionByCategoryFetch(category_id);
