@@ -145,7 +145,7 @@ async function endSession(){
                 test_date: date
             })
         };
-        //const response = await fetch("https://nexus-studio-ipn8.onrender.com/sessionhistory/create", options)
+        const response = await fetch("https://nexus-studio-ipn8.onrender.com/sessionhistory/create", options)
         //const response = await fetch("http://localhost:3000/sessionhistory/create", options)
         const data = await response.json()
         return data
