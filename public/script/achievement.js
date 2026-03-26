@@ -180,8 +180,8 @@ async function getDetailsByCategoryIDStudentID(student_id) {
     //let category_id = 1;
     try {
         for (let i=1; i < 4; i++) {
-            //const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
-            const response = await fetch(`http://localhost:3000/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
+            const response = await fetch(`https://nexus-studio-ipn8.onrender.com/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
+            //const response = await fetch(`http://localhost:3000/sessionhistory/category?student_id=${student_id}&category_id=${i}`)
             const sessionhistory = await response.json();
             if (sessionhistory.error) {
                 //console.log(sessionhistory.error)
