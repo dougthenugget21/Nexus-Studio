@@ -50,13 +50,14 @@ class SessionHistory{
     }
 
     static async createSession(data){
+        //console.log(data.time_taken + "From API")
         if (!data.student_id){throw new Error("Student ID is missing")}
         if (!data.total_attempts){throw new Error("Total Attempts is missing")}
         if (!data.score){throw new Error("Score is missing")}
         if (!data.time_taken){throw new Error("Time taken is missing")}
         if (!data.test_date){throw new Error("Test date is missing")}
-
-        const response = await db.query("INSERT INTO session_history (student_id, category_id, total_attempts, score, time_taken, test_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [data.student_id, data.category_id, data.total_attempts, data.score, data.time_taken, data.test_date])
+        const response = await db.query("INSERT INTO session_history (student_id, category_id, total_attempts, score, time_taken, test_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", 
+            [data.student_id, data.category_id, data.total_attempts, data.score, data.time_taken, data.test_date])
         return new SessionHistory(response.rows[0])
     }
 

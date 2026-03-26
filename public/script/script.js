@@ -30,28 +30,6 @@ generateBtn.addEventListener("click", () => {
   factText.textContent = facts[randomIndex];
 });
 
-document.getElementById("cat_1").addEventListener("click", function category1(e) {
-    //console.log("hi Rums")
-    e.preventDefault();
-    window.location.href = `quiz.html?category=1`;
-});
-
-document.getElementById("cat_2").addEventListener("click", function category2(e) {
-    //console.log("hi Rums")
-    e.preventDefault();
-    window.location.href = `quiz.html?category=2`;
-});
-
-document.getElementById("cat_3").addEventListener("click", function category3(e) {
-    //console.log("hi Rums")
-    e.preventDefault();
-    window.location.href = `quiz.html?category=3`;
-});
-document.getElementById("cat_4").addEventListener("click", function category4(e) {
-    //console.log("hi Rums")
-    e.preventDefault();
-    window.location.href = `quiz.html?category=`;
-});
 
 window.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
@@ -64,13 +42,32 @@ window.addEventListener("DOMContentLoaded", () => {
     const firstName = localStorage.getItem("first_name");
 
     const profileName = document.getElementById("profile_username");
+    document.getElementById("cat_1").addEventListener("click", function (e) {
+        e.preventDefault();
+        goToQuiz(1);
+    });
+
+    document.getElementById("cat_2").addEventListener("click", function (e) {
+        e.preventDefault();
+        goToQuiz(2);
+    });
+
+    document.getElementById("cat_3").addEventListener("click", function (e) {
+        e.preventDefault();
+        goToQuiz(3);
+    });
+
+    document.getElementById("cat_4").addEventListener("click", function (e) {
+        e.preventDefault();
+        goToQuiz(4);
+    });
 
     if (firstName) {
         profileName.textContent = `Hi, ${firstName}!`;
         progress_section.style.display='block';
         achievements_section.style.display='block';
         href_achievements.style.display='block';
-        href_leaderboard.style.display='block';        
+        href_leaderboard.style.display='block';
     } else {
         profileName.textContent = "Account";
         progress_section.style.display='none';
@@ -79,3 +76,15 @@ window.addEventListener("DOMContentLoaded", () => {
         href_leaderboard.style.display='none';
     }
 });
+
+function goToQuiz(categoryId) {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        window.location.href = `quiz.html?category=${categoryId}`;
+    } else {
+        alert("You need to sign in to start the test.");
+        localStorage.setItem("redirectAfterLogin", `quiz.html?category=${categoryId}`);
+        window.location.href = "login.html";
+    }
+}
