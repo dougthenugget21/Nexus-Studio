@@ -1,5 +1,6 @@
 const facts = [
   "Mount Everest grows about 4mm every year!",
+  "The last woolly mammoths didn't die out until 4,000 years ago on Wrangel Island, meaning they were still roaming the Arctic while the Great Pyramids were being built in Egypt!",
   "Earthquakes and volcanoes occur from activity in or below the earth's crust.",
   "About 90% of the volcanic activity on earth occurs in the oceans.",
   "The Sahara Desert used to be a lush rainforest.",
@@ -12,7 +13,7 @@ const facts = [
   "The word Himalaya actually means 'abode of snow'. The upper portion of Mount Everest is covered in snow and it never melts.",
   "Volcanoes can create new land when they erupt.",
   "Krill are tiny shrimp-like creatures that live in the freezing water under the Antarctic's ice.",
-  "Nauru became the richest nation per capita on Earth thanks to bird droppings.",
+  "Nauru became the richest nation per capita on Earth thanks to bird droppings (Guano).",
   "The Amazon rainforest produces about 20% of Earth's oxygen."
 ];
 
