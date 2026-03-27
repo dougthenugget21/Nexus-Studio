@@ -4,7 +4,7 @@ if (token) {
     loginlogout.innerText = "Sign Out"
     loginlogout.addEventListener('click', () => {
         localStorage.clear()
-        window.location.replace('./homepage.html')
+        window.location.replace('./index.html')
     })
 }
 else {
