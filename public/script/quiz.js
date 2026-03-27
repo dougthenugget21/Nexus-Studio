@@ -198,5 +198,5 @@ async function endSession(){
 }
 
 document.getElementById("okBtn").addEventListener("click", () => {
-    window.location.assign("homepage.html");
-});
+    window.location.assign("index.html");
+})

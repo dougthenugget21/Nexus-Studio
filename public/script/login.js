@@ -53,7 +53,7 @@ form.addEventListener("submit", async (e) => {
             localStorage.removeItem("redirectAfterLogin");
             window.location.href = redirectPage;
         } else {
-            window.location.href = "homepage.html";
+            window.location.href = "index.html";
         }
 
       } else {

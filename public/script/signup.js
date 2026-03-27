@@ -72,7 +72,7 @@ form.addEventListener("submit", async (e) => {
             localStorage.setItem("surname", data.surname);
             localStorage.setItem("email", data.email);
             localStorage.setItem("student_id", data.student_id)
-            window.location.assign("homepage.html");
+            window.location.assign("index.html");
         } else {
             alert(data.error || "Signup failed");
         }
